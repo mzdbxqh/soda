@@ -12,6 +12,9 @@ Page({
     imageInfoHidden: true, //图片详情是否显示 
     photoHidden: true, //TODO:修复图片调整尺寸时的抖动
     bottomBarHidden: false, //底部tabbar是否隐藏
+    isX: false, //是否横向滚动
+    scrollTop: 0,
+    scrollLeft: 0,
 
     imagewidth: 0,  //图片宽
     imageheight: 0, //图片高
@@ -177,14 +180,29 @@ Page({
     if (this.data.src == "") return
     wx.hideLoading();
     var imageSize = imageUtil.imageFixer(e);
+    var isX, scrollLeft, scrollTop
+    if (imageSize.imageWidth > imageSize.boxWidth) { //图片比容器宽
+      isX = true
+      scrollLeft = (imageSize.imageWidth - imageSize.boxWidth) / 2
+      scrollTop = 0
+    } else {
+      isX = false
+      scrollLeft = 0
+      scrollTop = (imageSize.imageHeight - imageSize.boxHeight) / 2
+    }
     this.setData({
       imagewidth: imageSize.imageWidth,
       imageheight: imageSize.imageHeight,
       boxwidth: imageSize.boxWidth,
-      boxheight: imageSize.boxHeight
-    });
+      boxheight: imageSize.boxHeight,
+      isX: isX
+    })
     this.setData({
       photoHidden: false
+    })
+    this.setData({
+      scrollLeft: scrollLeft,
+      scrollTop: scrollTop
     })
   },
 

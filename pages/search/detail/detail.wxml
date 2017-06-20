@@ -1,9 +1,18 @@
 <!--图片部分-->
-<view style="width: {{boxwidth}}px; height: {{boxheight}}px;" class="picBox">
-  <image style="width: {{imagewidth}}px; height: {{imageheight}}px;margin-left: {{-imagewidth/2}}px" 
+<block wx:if="{{isX}}">
+  <scroll-view scroll-x style="width: {{boxwidth}}px;" scroll-left="{{scrollLeft}}">
+    <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
     src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
-    hidden="{{photoHidden}}" class="pic"/>
-</view>
+    hidden="{{photoHidden}}" class="scroll-view-item" />
+  </scroll-view>
+</block>
+<block wx:else>
+  <scroll-view scroll-y style="height: {{boxheight}}px;" scroll-top="{{scrollTop}}">
+    <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
+    src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
+    hidden="{{photoHidden}}" class="scroll-view-item" />
+  </scroll-view>
+</block>
 
 <!--标签等信息部分-->
 <view hidden="{{imageInfoHidden}}" class="image-info-box">

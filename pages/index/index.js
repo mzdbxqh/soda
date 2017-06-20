@@ -17,6 +17,9 @@ Page({
     imageInfoHidden: true, //图片详情是否显示 
     photoHidden: true, //TODO:修复图片调整尺寸时的抖动
     bottomBarHidden: false, //底部tabbar是否隐藏
+    isX:false, //是否横向滚动
+    scrollTop:0,
+    scrollLeft:0,
     
     favCount: 0, //喜爱数量
     faved: false, //是否喜爱
@@ -217,16 +220,31 @@ Page({
    */
   imageLoaded: function (e) { //图片加载成功事件
     if(this.data.src == "") return
-    wx.hideLoading();
-    var imageSize = imageUtil.imageFixer(e);
+    wx.hideLoading()
+    var imageSize = imageUtil.imageFixer(e)
+    var isX,scrollLeft,scrollTop
+    if(imageSize.imageWidth > imageSize.boxWidth){ //图片比容器宽
+      isX = true
+      scrollLeft = (imageSize.imageWidth - imageSize.boxWidth) / 2
+      scrollTop = 0
+    } else {
+      isX = false
+      scrollLeft = 0
+      scrollTop = (imageSize.imageHeight - imageSize.boxHeight) / 2
+    }
     this.setData({
       imagewidth: imageSize.imageWidth, 
       imageheight: imageSize.imageHeight,
       boxwidth: imageSize.boxWidth,
-      boxheight: imageSize.boxHeight
+      boxheight: imageSize.boxHeight,
+      isX:isX
     });
     this.setData({
       photoHidden: false
+    })
+    this.setData({
+      scrollLeft: scrollLeft,
+      scrollTop: scrollTop
     })
     if(this.data.times > 1){
       setTimeout(function(){
@@ -351,7 +369,7 @@ Page({
     var that = this
     wx.showActionSheet({
       // itemList: ['发送给文武百官', '朕认为此图不妥','来人，朕有要事宣布'],
-      itemList: ['发送给朋友', '反馈', '举报','test'],
+      itemList: ['发送给朋友', '反馈', '举报'],
       success: function(res) {
         switch(res.tapIndex){
           case 0:
@@ -387,10 +405,6 @@ Page({
               }
             })
           break;
-          case 3:
-            wx.navigateTo({
-              url: '/pages/index/error/error',
-            })
           default:
         }
       },
