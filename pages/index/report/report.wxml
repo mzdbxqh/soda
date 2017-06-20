@@ -1,0 +1,26 @@
+<view class="weui-cells__title">举报理由</view>
+<view class="weui-cells weui-cells_after-title">
+  <radio-group bindchange="radioChange">
+    <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+      <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+      <view class="weui-cell__bd">{{item.name}}</view>
+      <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+        <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+      </view>
+    </label>
+  </radio-group>
+  <block wx:if="{{isOther}}">
+    <view class="weui-cell weui-cell_input">
+        <view class="weui-cell__hd">
+            <view class="weui-label">备注</view>
+        </view>
+        <view class="weui-cell__bd">
+            <input class="weui-input" placeholder="备注" bindchange="remarkChange"/>
+        </view>
+    </view>
+  </block>
+  
+  <button class="weui-btn" type="warn" catchtap="submit">举报</button>
+  
+</view>

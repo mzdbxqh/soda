@@ -1,0 +1,97 @@
+<view class="page">
+  <view class="page__hd">
+    <!--<view class="page__desc">添加图片</view>-->
+  </view>
+  <view class="page__bd">
+    <view class="weui-uploader">
+        
+      <view class="weui-uploader__hd">
+        <view class="weui-uploader__title">添加图片({{files.length}}/1)</view>
+        <view class="weui-uploader__info"></view>
+      </view>
+
+      <!--图片部分-->
+      <view class="weui-uploader__bd">
+        <view class="weui-uploader__files" id="uploaderFiles">
+          <block wx:for="{{files}}" wx:key="*this">
+            <view class="weui-uploader__file" bindtap="chooseImage" id="{{item}}">
+              <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+            </view>
+          </block>
+        </view>
+        <view class="weui-uploader__input-box" wx:if="{{files.length==0}}">
+          <view class="weui-uploader__input" bindtap="chooseImage"></view>
+        </view>
+
+      </view>
+    </view>
+
+    <!--标签部分-->
+    <view>
+      <view class="weui-cells__title">添加标签（输入后点击“下一项”，删除请点击标签）</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input tag-cell">
+          <view class="tags">
+            <block wx:for="{{tags}}" wx:key="*this">
+              <text class="label label-default"
+                bindtap="removeTag" 
+                data-index="{{index}}"
+                id="tag-{{index}}">{{item}}</text>
+            </block>
+          </view>
+          <!--comfirm-type 右下角按钮为下一个-->
+          <!--confirm-hold 点右下角按钮后键盘不收起 -->
+          <view class="weui-cell__bd tag-input">
+            <input class="weui-input" 
+              placeholder="如番号、角色名或题材" 
+              confirm-type="next"
+              confirm-hold="true"
+              bindchange="inputChange"
+              bindconfirm="inputConfirm" 
+              value="{{tagInputValue}}"
+              id="tagStr" />
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view>
+      <view class="weui-cells__title">版权信息</view>
+      <view class="weui-cells weui-cells_after-title">
+        <radio-group bindchange="radioChange">
+          <label class="weui-cell weui-check__label" wx:for="{{radioItems}}" wx:key="value">
+            <radio class="weui-check" value="{{item.value}}" checked="{{item.checked}}"/>
+
+            <view class="weui-cell__bd">{{item.name}}</view>
+            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+              <icon class="weui-icon-radio" type="success_no_circle" size="16" color="#2C3E50"></icon>
+            </view>
+          </label>
+        </radio-group>
+        <block wx:if="{{!isOrigin}}">
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">作者</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入作者" bindchange="inputChange" id="author" />
+            </view>
+          </view>
+
+          <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__hd">
+              <view class="weui-label">来源</view>
+            </view>
+            <view class="weui-cell__bd">
+              <input class="weui-input" placeholder="请输入来源" bindchange="inputChange" id="origin" />
+            </view>
+          </view>
+        </block>
+      </view> 
+    </view>
+   
+    <button class="weui-btn" type="primary" bindtap="callUploader">提交</button>
+
+
+  </view>
+</view>

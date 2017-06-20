@@ -1,0 +1,23 @@
+<!--updatelog.wxml-->
+<view class="page">
+  <!--<view class="page__hd">
+    <view class="page__desc">更新日志</view>
+  </view>-->
+  <view class="page__bd">
+    <!--更新历史-->
+    <block wx:if="{{updateList.length > 0}}">
+      <block wx:for="{{updateList}}" wx:key="*this">
+        <view class="weui-cells__title">{{item.date}}</view>
+        <view class="weui-cells weui-cells_show">
+          <block wx:for="{{item.list}}" wx:key="*this" wx:for-item="tagItem" wx:for-index="tagIndex">
+            <navigator url="/pages/search/list/list?tagId={{tagItem.fixTag.id}}&tagName={{tagItem.fixTag.name}}" class="weui-cell weui-cell_access">
+              <view class="weui-cell__bd">{{tagItem.fixTag.name}}({{tagItem.count}}items)</view>
+              <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+            </navigator>
+          </block>
+        </view>
+      </block>
+    </block>
+
+  </view>
+</view>

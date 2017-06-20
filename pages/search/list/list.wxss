@@ -1,0 +1,24 @@
+/* list.wxss */
+
+.pic-box {
+  display: block;
+  width: 345rpx;
+  height:613rpx;
+  margin-left: 20rpx;
+  margin-top: 20rpx;
+  border-radius: 5rpx;
+  box-shadow: 5rpx 5rpx 3rpx #ccc;
+  float: left;
+  overflow: hidden;
+}
+.pic-box image {
+  position: relative;
+  left:50%;
+}
+
+.page__bd {
+  padding-bottom:20rpx;
+}
+.page__bd__bottom {
+  clear: both;
+}

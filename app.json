@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/report/report",
+    "pages/index/feedback/feedback",
+    "pages/index/error/error",
+    "pages/search/search",
+    "pages/search/updatelog/updatelog",
+    "pages/search/collectlog/collectlog",
+    "pages/search/list/list",
+    "pages/search/detail/detail",
+    "pages/share/share",
+    "pages/share/uploader/uploader"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "Soda壁纸",
+    "backgroundTextStyle": "dark",
+    "backgroundColor": "#f8f8f8"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "connectSocket": 10000,
+    "uploadFile": 60000,
+    "downloadFile": 60000
+  },
+  "tabBar": {
+    "backgroundColor": "#FAFAFA",
+    "color": "#000000",
+    "selectedColor": "#2C3E50",
+    "position": "top",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "　☻ Lucky!　"
+      },
+      {
+        "pagePath": "pages/search/search",
+        "text": "　εїз 探索　"
+      },
+      {
+        "pagePath": "pages/share/share",
+        "text": "　ω 共享　"
+      }
+    ]
+  },
+  "debug": false
+}

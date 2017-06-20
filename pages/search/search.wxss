@@ -1,0 +1,19 @@
+.searchbar-result{
+    margin-top: 0;
+    font-size: 14px;
+}
+.searchbar-result:before{
+    display: none;
+}
+.weui-search-bar__cancel-btn {
+  color:#2C3E50;
+}
+.weui-cell{
+    padding: 12px 15px;
+}
+.weui-cells {
+  margin-top: 0;
+}  
+.weui-cell__bd {
+  font-size: 14px;
+}

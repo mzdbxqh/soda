@@ -1,0 +1,16 @@
+<!--error.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">错误信息</view>
+    <view class="page__desc">
+      首次访问本小程序时，将会弹出微信授权的提示窗口。如手误按了「拒绝」按钮，将无法使用本程序。此时可以通过如下步骤进行补救：
+      <view>1.通过微信底部的「发现」-「小程序」，进入小程序列表</view>
+      <view>2.找到「Soda壁纸」，并左划删除，安卓是长按删除</view>
+      <view>3.重新通过搜索「Soda壁纸」进入本程序</view>
+      <view>4.在重新弹出的微信授权提示窗口中，选择「允许」即可</view>
+    </view>
+  </view>
+</view>
+
+
+

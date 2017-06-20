@@ -1,0 +1,52 @@
+/* updatelog.wxss */
+/*更新日志部分*/
+/*.title {
+  font-size: 1rem;
+  line-height: 2rem;
+  font-weight: 100;
+  margin-top: 1rem;
+  color: #888;
+}
+.record {
+  height: 2rem;
+  background-image: url("http://picture.91xiaban.com/resources/dot.png?201706071037");
+  background-repeat: repeat-x;
+  background-position-y: center;
+}
+.label-default {
+  font-size: 0.75rem;
+  padding:.2em .8em .3em;
+  background:#95A5A6;
+  color:#fff;
+}
+.nav {
+  float:left;
+  padding-right: 5rpx;
+  background-color: #F8F8F8;
+  line-height: 2rem;
+}
+.count {
+  font-size: 0.9rem;
+  line-height: 2rem;
+  padding-left: 10rpx;
+  color:#888;
+  background-color: #F8F8F8;
+  float:right;
+}
+.label-box {
+    padding: 15px;
+}
+.label-box .label {
+    margin-right: 10rpx;
+}*/
+
+.weui-cell{
+    /*padding: 12px 15px 12px 35px;*/
+    padding: 12px 15px;
+}
+.weui-cells {
+  margin-top: 0;
+}  
+.weui-cell__bd {
+  font-size: 14px;
+}

@@ -1,0 +1,7 @@
+.weui-cells {
+  padding-bottom: 20rpx;
+}
+.weui-btn {
+  margin: 20rpx;
+  clear: both;
+}

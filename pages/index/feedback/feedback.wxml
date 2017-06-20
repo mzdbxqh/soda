@@ -1,0 +1,25 @@
+<view class="page">
+  
+  <view class="page__bd">
+    <view class="weui-cells__title">请输入你的建议/意见</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell">
+            <view class="weui-cell__bd">
+                <textarea class="weui-textarea" placeholder="" bindblur="contentChange" style="height: 3.3em" />
+            </view>
+        </view>
+    </view>
+
+    <view class="weui-cells__title">联系方式（选填）</view>
+    <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+            <view class="weui-cell__bd">
+                <input class="weui-input" placeholder="" bindchange="contactChange" focus="{{focus}}" />
+            </view>
+        </view>
+    </view>
+    <button class="weui-btn" type="primary" bindtap="callSubmit">提交</button>
+
+
+  </view>
+</view>

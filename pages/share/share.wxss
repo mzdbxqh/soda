@@ -1,0 +1,23 @@
+.about {
+    display: block;
+    font-size: 0.7rem;
+    text-align: center;
+}
+button[type="primary"] {
+  background-color: #2C3E50;
+}
+button[type="primary"]:active {
+  background-color: #34495E;
+}
+button[type="primary"]:visited {
+  background-color: #2C3E50;
+}
+button[type="primary"]:hover {
+  background-color: #34495E;
+}
+.logo {
+    width:80px;
+    height:80px;
+    display: block;
+    margin: 0 auto;
+}

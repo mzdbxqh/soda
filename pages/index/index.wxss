@@ -1,0 +1,102 @@
+/**index.wxss**/
+/*图片详情部分*/
+.image-info-box {
+  position: absolute;
+  z-index: 500;
+  bottom: 170rpx;
+  left:34rpx;
+  width:650rpx;
+  padding:10rpx;
+  color:#fff;
+  font-size: 30rpx;
+  line-height: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  border-left: 15rpx #000 solid;
+}
+.scroll-view-item {
+  white-space: nowrap;
+}
+
+.image-info-title {
+  float: left;
+  width: 90rpx;
+  padding-right: 10rpx;
+}
+.image-info-title text {
+  display: inline-block;
+  text-align: right;
+  width: 80rpx;
+}
+.image-info-box navigator {
+  display: inline-block;
+}
+.image-info-box .label {
+  margin-right: 15rpx;
+}
+
+/*底部tabbar部分*/
+.image-control-tabbar {
+  position: absolute;
+  z-index: 500;
+  bottom: 0;
+  width: 100%;
+  background-image: url("http://picture.91xiaban.com/bottom-tab-bar.png?20170615");
+  background-repeat: repeat-x;
+  background-position: top;
+  /*border-top: 1px #999 solid;
+  background: rgba(0, 0, 0, 0.4);*/
+}
+.weui-flex__item {
+  height: 120rpx;
+}
+.weui-flex__item image {
+  width: 50rpx;
+  height: 50rpx;
+  display: block;
+  margin: 15rpx auto 10rpx;
+}
+.weui-flex__item text {
+  display: block;
+  text-align: center;
+  font-size: 0.675rem;
+  color:#fff;
+}
+
+/*随机按钮部分*/
+.random {
+  display: block;
+  position: absolute;
+  z-index: 500;
+  top: 0;
+  right: 0;
+  width:130rpx;
+  height:130rpx;
+}
+.random image {
+  display: inline-block;
+  position: absolute;
+  top:30rpx;
+  right:30rpx;
+  width: 80rpx;
+  height:80rpx;
+}
+
+/*图片主体部分*/
+.picBox {
+  overflow:hidden;
+  position: absolute;
+}
+
+.pic {
+  position: relative;
+  left:50%;
+}
+
+.prev {
+  position: absolute;
+  left:0;
+  top:0;
+  width:0;
+  height: 0;
+  display: none;
+}

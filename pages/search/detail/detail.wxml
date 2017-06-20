@@ -1,0 +1,66 @@
+<!--图片部分-->
+<view style="width: {{boxwidth}}px; height: {{boxheight}}px;" class="picBox">
+  <image style="width: {{imagewidth}}px; height: {{imageheight}}px;margin-left: {{-imagewidth/2}}px" 
+    src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
+    hidden="{{photoHidden}}" class="pic"/>
+</view>
+
+<!--标签等信息部分-->
+<view hidden="{{imageInfoHidden}}" class="image-info-box">
+  <view class="image-info-title">
+    <text>[Tag]</text>
+    <text>[Info]</text>
+    <text>[Via]</text>
+    <text>[By]</text>
+  </view>
+  <scroll-view scroll-x class="image-info">
+    <view class="scroll-view-item">
+      <view>
+        <block wx:for="{{tags}}" wx:key="*this">
+          <!--这里的链接是重定向，跟首页不一样-->
+          <block wx:if="{{item.id!=null}}">
+            <navigator url="/pages/search/list/list?tagId={{item.id}}&tagName={{item.fixTagName}}" open-type="redirect">
+              <text class="label label-default">{{item.name}}</text>
+            </navigator>
+          </block>
+          <block wx:else>
+              <text class="label label-default">{{item.name}}</text>
+          </block>
+        </block>
+      </view>
+      <view>
+        <text>{{picExif}}</text>
+      </view>
+      <view>
+        <text>{{author}}</text>
+      </view>
+      <view>
+        <text>{{createBy}}</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+
+<!--底部tabbar部分-->
+<view class="image-control-tabbar" hidden="{{bottomBarHidden}}">
+  <view class="weui-flex">
+    <view catchtap="showDetail" class="weui-flex__item">
+      <image wx:if="{{imageInfoHidden}}" src="/images/info.png"></image>
+      <image wx:else src="/images/infoed.png"></image>
+      <text>信息</text>
+    </view>
+    <view catchtap="download" class="weui-flex__item">
+      <image src="/images/download.png"></image>
+      <text>原图</text>
+    </view>
+    <view catchtap="doFav" class="weui-flex__item">
+      <image wx:if="{{faved}}" src="/images/loved.png"></image>
+      <image wx:else src="/images/love.png"></image>
+      <text>{{favCount}}</text>
+    </view>
+    <view catchtap="actionSheet" class="weui-flex__item">
+      <image src="/images/more.png"></image>
+      <text>更多</text>
+    </view>
+  </view>
+</view>

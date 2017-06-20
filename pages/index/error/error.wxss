@@ -1,0 +1,5 @@
+/* error.wxss */
+.page__desc > view {
+  margin-top: 15rpx;
+  border-bottom: 1px dotted #999;
+}
