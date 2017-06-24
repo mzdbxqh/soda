@@ -229,16 +229,59 @@ Page({
    * 查看原图
    */
   download: function () {
-    wx.previewImage({
-      urls: [this.data.originSrc],
-      success: function (res) {
-        // success
+    var that = this
+    jsUtil.authedRequest({
+      url: "a/wp/picture/showOriginPic",
+      method: "GET",
+      success: function (data) {
+        console.log(data)
+      }
+    })
+    imageUtil.checkAlbumAuth({
+      hasAuth: function () {
+
+        jsUtil.formLoading({
+          title: "正在下载..."
+        })
+        //先下载
+        wx.downloadFile({
+          url: that.data.originSrc,
+          success: function (res) {
+
+            //再转移到相册
+            wx.hideLoading() //隐藏和下一次显示必须有时间差
+            wx.saveImageToPhotosAlbum({
+              filePath: res.tempFilePath,
+              success(res) {
+                jsUtil.formSuccessTip({
+                  title: "已保存至手机相册",
+                  callback: function () { }
+                })
+              },
+              fail(res) {
+                jsUtil.formErrTip({
+                  title: res.errMsg
+                })
+              }
+            })
+
+          }
+        })
+
       },
-      fail: function (res) {
-        // fail
-      },
-      complete: function (res) {
-        // complete
+      noAuth: function () {
+        wx.previewImage({
+          urls: [that.data.originSrc],
+          success: function (res) {
+            // success
+          },
+          fail: function (res) {
+            // fail
+          },
+          complete: function (res) {
+            // complete
+          }
+        })
       }
     })
   },

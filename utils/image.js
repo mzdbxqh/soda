@@ -14,7 +14,8 @@
  * 获取图片服务器地址
  */
 function getPicServerUrl() {
-  return "http://picture1.91xiaban.com";
+  // return "http://picture1.91xiaban.com";
+  return "http://soda-1253373459.image.myqcloud.com";
   // return "http://picture.91xiaban.com";
 }
 
@@ -117,9 +118,43 @@ function getThumb(image = { width: 1, height: 1 }) {
   return thumb
 }
 
+function checkAlbumAuth({hasAuth,noAuth}) {
+  if(wx.canIUse("saveImageToPhotosAlbum")){ //1.20开始支持保存到相册
+    if (wx.canIUse("authorize")){ //1.20开始支持检查权限
+
+      // 可以通过 wx.getSetting 先查询一下用户是否授权了 "scope.writePhotosAlbum" 这个 scope
+      wx.getSetting({
+        success(res) {
+          if (!res['scope.writePhotosAlbum']) {
+            wx.authorize({
+              scope: 'scope.writePhotosAlbum',
+              success: function() {
+                console.log("hasAuth")
+                hasAuth()
+              },
+              fail: function() {
+                console.log("noAuth")
+                noAuth()
+              }
+            })
+          }
+        }
+      })
+
+    } else { //不支持检查权限
+      console.log("cannotCheck")
+      noAuth()
+    }
+  } else { //不支持保存到相册
+    console.log("cannotSave")
+    noAuth()
+  }
+}
+
 module.exports = {
   imageFixer: imageFixer,
   smallImageFixer: smallImageFixer,
   getThumb: getThumb,
-  getPicServerUrl: getPicServerUrl
+  getPicServerUrl: getPicServerUrl,
+  checkAlbumAuth: checkAlbumAuth
 }

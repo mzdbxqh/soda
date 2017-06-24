@@ -171,8 +171,8 @@ Page({
               "pictureHeight": pic.pictureHeight,
               "hasOrigin": that.data.isOrigin ? "1" : "0",
               "tags": that.data.tags,
-              "originThird": that.data.inputContent["origin"],
-              "originAuthor": that.data.inputContent["author"]
+              "originThird": that.data.inputContent["origin"] ? that.data.inputContent["origin"]:"",
+              "originAuthor": that.data.inputContent["author"] ? that.data.inputContent["author"]:""
             }
             jsUtil.authedRequest({
               url:"a/wp/picture/saveByWechat",
