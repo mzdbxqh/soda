@@ -1,4 +1,4 @@
-// collectlog.js
+// createlog.js
 var jsUtil = require("../../../utils/util.js")
 var imageUtil = require("../../../utils/image.js")
 Page({
@@ -17,12 +17,6 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    // if (!options.tagId) {
-    //   that.setData({
-    //     tagId: "e9cc77eb218c401d984d17da0a31d96f",
-    //     tagName: "新海诚"
-    //   })
-    // }
   },
 
   /**
@@ -50,7 +44,7 @@ Page({
       return
     }
     jsUtil.authedRequest({
-      url: "a/wp/picture/collect/list",
+      url: "a/wp/picture/create/list",
       method: "POST",
       data: {
         "pageNo": pageNo
@@ -75,7 +69,7 @@ Page({
         })
         if (list.length === 0) {
           jsUtil.formSuccessTip({
-            title: "噢...看上去后宫暂时还是空的",
+            title: "还未发布过壁纸...来一张?",
             duration: 3000,
             callback: function () {
               wx.navigateBack({

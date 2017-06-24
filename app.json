@@ -7,6 +7,7 @@
     "pages/search/search",
     "pages/search/updatelog/updatelog",
     "pages/search/collectlog/collectlog",
+    "pages/search/createlog/createlog",
     "pages/search/list/list",
     "pages/search/detail/detail",
     "pages/share/share",

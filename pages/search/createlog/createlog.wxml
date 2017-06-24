@@ -1,0 +1,16 @@
+<!--createlog.wxml-->
+<view class="page">
+  <!--<view class="page__hd">
+    <view class="page__title">标签：{{tagName}}</view>
+    <view class="page__desc">壁纸列表</view>
+  </view>-->
+  <view class="page__bd">
+  
+    <block wx:for="{{pictureList}}" wx:key="*this">
+      <navigator url="/pages/search/detail/detail?pid={{item.id}}" class="pic-box">
+        <image src="{{item.src}}" style="width: {{item.width}}rpx; height: {{item.height}}rpx;margin-left: {{-item.width/2}}rpx" />
+      </navigator>
+    </block>
+    <view class="page__bd__bottom"></view>
+  </view>
+</view>
