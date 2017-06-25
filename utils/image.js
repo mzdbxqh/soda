@@ -12,10 +12,11 @@
 
 /**
  * 获取图片服务器地址
+ * 下载必须使用后台配置过的https域名
  */
 function getPicServerUrl() {
   // return "http://picture1.91xiaban.com";
-  return "http://soda-1253373459.image.myqcloud.com";
+  return "https://soda-1253373459.image.myqcloud.com";
   // return "http://picture.91xiaban.com";
 }
 
