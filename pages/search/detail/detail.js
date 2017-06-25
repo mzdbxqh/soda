@@ -265,6 +265,10 @@ Page({
               }
             })
 
+          }, fail: function (res) {
+            jsUtil.formErrTip({
+              title: res.errMsg
+            })
           }
         })
 
