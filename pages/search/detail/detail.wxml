@@ -60,7 +60,7 @@
     </view>
     <view catchtap="download" class="weui-flex__item">
       <image src="/images/download.png"></image>
-      <text>下载</text>
+      <text>{{picSize}}</text>
     </view>
     <view catchtap="doFav" class="weui-flex__item">
       <image wx:if="{{faved}}" src="/images/loved.png"></image>

@@ -86,10 +86,10 @@ Page({
         /**
          * 修正图片信息
          */
-        var picExif
-        picExif = (data.fileSize / 1048576).toFixed(2)
-        picExif += "MB,"
-        picExif += data.pictureWidth + "×" + data.pictureHeight
+        var picSize, picExif
+        picSize = (data.fileSize / 1048576).toFixed(2)
+        picSize += "M"
+        picExif = picSize + "," + data.pictureWidth + "×" + data.pictureHeight
 
         /**
          * 修正url
@@ -106,6 +106,7 @@ Page({
           tags: data.fixTagList ? data.fixTagList : [{ name: "无标签" }], //临时
           author: author,
           createBy: createBy,
+          picSize: picSize,
           picExif: picExif,
           faved: data.hasCollect,
           favCount: data.collectCount,
