@@ -37,11 +37,14 @@ Page({
     t = setTimeout(getSearchTip,200)
   },
   inputConfirm: function(e){
+    var that = this
     var title
-    if(this.data.tagList.length == 0){
+    if (that.data.tagList.length == 0){
       title = "无搜索结果"
     } else {
-      title = "请从下面列表中选择标签"
+      wx.navigateTo({
+        url: '/pages/search/list/list?tagId=' + that.data.tagList[0].id + '&tagName=' + that.data.tagList[0].name,
+      })
     }
     jsUtil.formErrTip({
       title: title
