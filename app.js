@@ -1,77 +1,50 @@
 App({
 
   /**
-   * 服务器Url
+   * 全局Url
    */
   // serverUrl = "http://127.0.0.1:8080/soda/",
-  serverUrl: "https://www.91xiaban.com/",
+  serverUrl: "https://www.91xiaban.com/", // 服务器Url
+  picServerUrl: "https://soda-1253373459.image.myqcloud.com", // 图片服务器Url
 
   /**
-   * 图片服务器Url
-   * 下载必须使用后台配置过的https域名
+   * 获取单图接口
    */
-  picServerUrl: "https://soda-1253373459.image.myqcloud.com",
+  getRandomPicUrl: "a/wp/picture/getRandomPic", // 随机获取图片
+  getPicUrl: "a/wp/picture/getPic", // 获取指定图片
 
   /**
-   * 随机获取图片接口
+   * 获取图片列表接口
    */
-  getRandomPicUrl: "a/wp/picture/getRandomPic",
+  picCollectListUrl: "a/wp/picture/collect/list", // 获取图片收藏列表
+  picCreateListUrl: "a/wp/picture/create/list", // 获取图片发布列表
+  picUpdateListUrl: "a/wp/fixTag/getUpdateLog", // 根据修正标签显示图片更新列表
+  picListByFixTagUrl: "a/wp/picture/fixTag/list", // 根据修正标签获取图片列表
 
   /**
-   * 获取指定图片接口
+   * 图片操作接口
    */
-  getPicUrl: "a/wp/picture/getPic",
+  picCollectUrl: "a/wp/picture/collect/save", // 收藏图片
+  picCollectCancelUrl: "a/wp/picture/collect/del", // 取消收藏
+  picUploadUrl: "a/wp/picture/import", // 上传图片
+  picInfoUploadUrl: "a/wp/picture/saveByWechat", // 上传图片信息
 
   /**
-   * 获取图片收藏列表接口
+   * 标签操作接口
    */
-  picCollectListUrl: "a/wp/picture/collect/list",
+  fixTagSearchUrl: "a/wp/fixTag/search", //搜索修正标签
 
   /**
-   * 获取图片发布列表接口
+   * 辅助页面接口
    */
-  picCreateListUrl: "a/wp/picture/create/list",
-
-  /**
-   * 收藏/取消图片接口
-   */
-  picCollectUrl: "a/wp/picture/collect/save",
-  picCollectCancelUrl: "a/wp/picture/collect/del",
-
-  /**
-   * 根据修正标签获取图片列表接口
-   */
-  picListByFixTagUrl: "a/wp/picture/fixTag/list",
-
-  /**
-   * 根据修正标签显示图片更新列表接口
-   */
-  picUpdateListUrl: "a/wp/fixTag/getUpdateLog",
-
-  /**
-   * 搜索修正标签接口
-   */
-  fixTagSearchUrl: "a/wp/fixTag/search",
-
-  /**
-   * 图片上传接口
-   */
-  picUploadUrl: "a/wp/picture/import",
-  picInfoUploadUrl: "a/wp/picture/saveByWechat",
-
-  /**
-   * 提交feedback/report接口
-   */
-  feedbackUrl: "a/wp/feedback/put",
-  reportUrl: "a/wp/report/put",
+  feedbackUrl: "a/wp/feedback/put", // 提交feedback
+  reportUrl: "a/wp/report/put", // 提交report
 
   /**
    * 纯交互行为埋点
    */
-  // 图片加载确认接口
-  picLoadConfirmUrl: "a/wp/picture/confirm",
-  // 显示大图行为接口
-  picShowOriginUrl: "a/wp/picture/showOriginPic",
+  picLoadConfirmUrl: "a/wp/picture/confirm", // 图片加载确认接口
+  picShowOriginUrl: "a/wp/picture/showOriginPic", // 显示大图行为接口
 
   /**
    * 资源地址
