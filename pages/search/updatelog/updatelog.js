@@ -1,5 +1,6 @@
 // updatelog.js
 var jsUtil = require("../../../utils/util.js")
+var app = getApp()
 Page({
 
   /**
@@ -15,7 +16,7 @@ Page({
   getUpdateLog: function () {
     var that = this
     jsUtil.authedRequest({
-      url: "a/wp/fixTag/getUpdateLog",
+      url: app.picUpdateListUrl,
       method: "POST",
       data: {
         tagType: 1

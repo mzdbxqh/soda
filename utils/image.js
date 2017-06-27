@@ -11,16 +11,6 @@
 })()
 
 /**
- * 获取图片服务器地址
- * 下载必须使用后台配置过的https域名
- */
-function getPicServerUrl() {
-  // return "http://picture1.91xiaban.com";
-  return "https://soda-1253373459.image.myqcloud.com";
-  // return "http://picture.91xiaban.com";
-}
-
-/**
  * 根据屏幕尺寸调整图片大小
  */
 function imageFixer(e) {
@@ -156,6 +146,5 @@ module.exports = {
   imageFixer: imageFixer,
   smallImageFixer: smallImageFixer,
   getThumb: getThumb,
-  getPicServerUrl: getPicServerUrl,
   checkAlbumAuth: checkAlbumAuth
 }

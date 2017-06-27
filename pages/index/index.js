@@ -3,6 +3,7 @@
 var jsUtil = require('../../utils/util.js')
 var audioUtil = require('../../utils/audio.js')
 var imageUtil = require('../../utils/image.js')
+var app = getApp()
 Page({
   data: { //数据
     originSrc:"", //原图url
@@ -41,7 +42,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-
+    
   },
 
   /**
@@ -94,7 +95,7 @@ Page({
       audioUtil.playTap()
     }
     jsUtil.authedRequest({
-      url: "a/wp/picture/getRandomPic",
+      url: app.getRandomPicUrl,
       method: "GET",
       success: function (data) {
         that.refreshData(data)
@@ -144,7 +145,7 @@ Page({
      * 修正url
      */
     var picSrc, picOriginSrc
-    picOriginSrc = imageUtil.getPicServerUrl() + data.filePath + data.fileName
+    picOriginSrc = app.picServerUrl + data.filePath + data.fileName
     picSrc = picOriginSrc + imageUtil.getThumb({
       width:data.pictureWidth,
       height:data.pictureHeight
@@ -179,7 +180,7 @@ Page({
     var endTime = new Date().getTime()
     var keepTime = endTime - that.data.loadBeginTime
     jsUtil.authedRequest({
-      url: "a/wp/picture/confirm",
+      url: app.picLoadConfirmUrl,
       data: {
         "keepTime": keepTime,
         "result": "success"
@@ -202,7 +203,7 @@ Page({
     var endTime = new Date().getTime()
     var keepTime = endTime - that.data.loadBeginTime
     jsUtil.authedRequest({
-      url: "a/wp/picture/confirm",
+      url: app.picLoadConfirmUrl,
       data: {
         "keepTime": keepTime,
         "result": "fail"
@@ -280,7 +281,7 @@ Page({
   download: function() {
     var that = this
     jsUtil.authedRequest({
-      url: "a/wp/picture/showOriginPic",
+      url: app.picShowOriginUrl,
       method: "GET",
       success: function (data) {
         console.log(data)
@@ -347,7 +348,6 @@ Page({
     var that = this
     return {
       title: 'Soda壁纸【微信一定要把图裁掉一半】',
-      // path: '/pages/detail/detail?pid=' + that.data.current,
       path: '/pages/index/index',
       success: function(res) {
         jsUtil.formSuccessTip({
@@ -369,7 +369,7 @@ Page({
     var that = this
     if (!that.data.faved){
       jsUtil.authedRequest({
-        url: "a/wp/picture/collect/save",
+        url: app.picCollectUrl,
         data:{
           "id":that.data.current
         },
@@ -389,7 +389,7 @@ Page({
       })
     } else {
       jsUtil.authedRequest({
-        url: "a/wp/picture/collect/del",
+        url: app.picCollectCancelUrl,
         data: {
           "id": that.data.current
         },

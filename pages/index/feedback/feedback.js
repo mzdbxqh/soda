@@ -1,4 +1,5 @@
 var jsUtil = require('../../../utils/util.js')
+var app = getApp()
 Page({
 
   /**
@@ -14,8 +15,6 @@ Page({
    * 输入建议
    */
   contentChange: function(e){
-    console.log(e)
-    console.log("content")
     this.setData({
       content: e.detail.value
     })
@@ -25,7 +24,6 @@ Page({
    * 输入联系方式
    */
   contactChange: function (e) {
-    console.log("contact")
     this.setData({
       contact: e.detail.value
     })
@@ -65,7 +63,7 @@ Page({
     }
 
     jsUtil.authedRequest({
-      url: "a/wp/feedback/put",
+      url: app.feedbackUrl,
       data: postData,
       success: function (data) {
         // 间隔时间太短，不手动关闭，直接用下一个toast覆盖，否则会闪退

@@ -1,6 +1,7 @@
 // collectlog.js
 var jsUtil = require("../../../utils/util.js")
 var imageUtil = require("../../../utils/image.js")
+var app = getApp()
 Page({
 
   /**
@@ -50,7 +51,7 @@ Page({
       return
     }
     jsUtil.authedRequest({
-      url: "a/wp/picture/collect/list",
+      url: app.picCollectListUrl,
       method: "POST",
       data: {
         "pageNo": pageNo
@@ -60,7 +61,7 @@ Page({
         for (var i = 0; i < data.list.length; i++) {
           var imageSize = imageUtil.smallImageFixer(data.list[i]);
           newList[i] = {
-            src: imageUtil.getPicServerUrl() + data.list[i].filePath + data.list[i].fileName + "!400",
+            src: app.picServerUrl + data.list[i].filePath + data.list[i].fileName + "!400",
             width: imageSize.imageWidth,
             height: imageSize.imageHeight,
             id: data.list[i].id

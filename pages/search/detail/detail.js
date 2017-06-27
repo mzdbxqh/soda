@@ -1,5 +1,6 @@
 var jsUtil = require("../../../utils/util.js")
 var imageUtil = require("../../../utils/image.js")
+var app = getApp()
 Page({
 
   /**
@@ -57,7 +58,7 @@ Page({
       mask: true
     })
     jsUtil.authedRequest({
-      url: "a/wp/picture/getPic",
+      url: app.getPicUrl,
       data: {
         id:that.data.current
       },
@@ -95,7 +96,7 @@ Page({
          * 修正url
          */
         var picSrc, picOriginSrc
-        picOriginSrc = imageUtil.getPicServerUrl() + data.filePath + data.fileName
+        picOriginSrc = app.picServerUrl + data.filePath + data.fileName
         picSrc = picOriginSrc + imageUtil.getThumb({
           width: data.pictureWidth,
           height: data.pictureHeight
@@ -232,7 +233,7 @@ Page({
   download: function () {
     var that = this
     jsUtil.authedRequest({
-      url: "a/wp/picture/showOriginPic",
+      url: app.picShowOriginUrl,
       method: "GET",
       success: function (data) {
         console.log(data)
@@ -320,7 +321,7 @@ Page({
     var that = this
     if (!that.data.faved) {
       jsUtil.authedRequest({
-        url: "a/wp/picture/collect/save",
+        url: app.picCollectUrl,
         data: {
           "id": that.data.current
         },
@@ -340,7 +341,7 @@ Page({
       })
     } else {
       jsUtil.authedRequest({
-        url: "a/wp/picture/collect/del",
+        url: app.picCollectCancelUrl,
         data: {
           "id": that.data.current
         },

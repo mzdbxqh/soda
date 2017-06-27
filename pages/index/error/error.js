@@ -1,5 +1,5 @@
 // error.js
-
+var app = getApp()
 Page({
 
   /**

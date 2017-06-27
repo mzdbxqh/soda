@@ -1,4 +1,5 @@
 var jsUtil = require('../../../utils/util.js')
+var app = getApp()
 Page({
     data: {
       files: [],
@@ -157,7 +158,7 @@ Page({
         title: "正在上传"
       })
       jsUtil.authedUploader({
-        url:"a/wp/picture/import",
+        url: app.picUploadUrl,
         filePath: that.data.files[0],
         success:function(data){
           var res = JSON.parse(data)
@@ -175,7 +176,7 @@ Page({
               "originAuthor": that.data.inputContent["author"] ? that.data.inputContent["author"]:""
             }
             jsUtil.authedRequest({
-              url:"a/wp/picture/saveByWechat",
+              url: app.picInfoUploadUrl,
               data:postData,
               success:function(data){
                 wx.hideLoading()

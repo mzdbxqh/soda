@@ -4,7 +4,7 @@
  * 2、表单提示
  * 3、文本格式化
  */
-
+var app = getApp()
 function formatTime(date) {
   var year = date.getFullYear()
   var month = date.getMonth() + 1
@@ -21,14 +21,6 @@ function formatTime(date) {
 function formatNumber(n) {
   n = n.toString()
   return n[1] ? n : '0' + n
-}
-
-/**
- * 获得服务器地址
- */
-function getServerUrl() {
-  // return "http://127.0.0.1:8080/soda/";
-  return "https://www.91xiaban.com/";
 }
 
 /**
@@ -61,7 +53,7 @@ function login(callBack){
             }
             // 上报用户数据
             wx.request({
-              url: getServerUrl() + "wechatLogin",
+              url: app.serverUrl + "wechatLogin",
               data: {
                 "userinfo":res2.userInfo,
                 "encryptedData":res2.encryptedData,
@@ -106,7 +98,7 @@ function authedRequest({url, data, success, fail, complete, method = "POST"}) {
   var time = 1
   var cookieStr = ""
   var header = {}
-  url = getServerUrl() + url
+  url = app.serverUrl + url
   var callback = function(){
     
     var jeeSiteSessionId = getSessionId()
@@ -147,7 +139,7 @@ function authedUploader({url, filePath,formData={},success,fail,complete}){
   var time = 1
   var cookieStr = ""
   var header = {}
-  url = getServerUrl() + url
+  url = app.serverUrl + url
   var callback = function(){
     
     var jeeSiteSessionId = getSessionId()

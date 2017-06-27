@@ -6,6 +6,7 @@
  * 初始化并判定兼容性
  * ciu = Can I Use
  */
+var app = getApp()
 var ciuAudio = 0
 var backgroundAudioManager = null
 function audioInit(){
@@ -16,7 +17,7 @@ function audioInit(){
         backgroundAudioManager.title = 'Soda音效'
         backgroundAudioManager.epname = 'Soda音效'
         backgroundAudioManager.singer = 'Soda'
-        backgroundAudioManager.coverImgUrl = 'http://picture.91xiaban.com/bottom-tab-bar.png'
+        backgroundAudioManager.coverImgUrl = app.audioCoverPic
         ciuAudio = 1
         return true
       } else {
@@ -54,7 +55,7 @@ function isPlaying(){
 function playTap(){
   if (audioInit()) {
     backgroundAudioManager.title = "滴，学生卡"
-    backgroundAudioManager.src = "http://picture.91xiaban.com/resources/tap.mp3?20170612"
+    backgroundAudioManager.src = app.audioTap
   }
 }
 
@@ -64,7 +65,7 @@ function playTap(){
 function playSlide() {
   if (audioInit()) {
     backgroundAudioManager.title = "咻..."
-    backgroundAudioManager.src = "http://picture.91xiaban.com/resources/slide.mp3?20170612"
+    backgroundAudioManager.src = app.audioSlide
   }
 }
 

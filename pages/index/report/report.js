@@ -1,4 +1,5 @@
 var jsUtil = require('../../../utils/util.js')
+var app = getApp()
 Page({
   data: {
     radioItems: [
@@ -55,7 +56,7 @@ Page({
       return
     }
     jsUtil.authedRequest({
-      url: "a/wp/report/put",
+      url: app.reportUrl,
       data: {
         "picture.id": that.data.current,
         "reason": that.data.reason,

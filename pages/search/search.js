@@ -1,4 +1,5 @@
 var jsUtil = require("../../utils/util.js")
+var app = getApp()
 var t
 Page({
   data: {
@@ -58,7 +59,7 @@ Page({
         return
       }
     jsUtil.authedRequest({
-      url: "a/wp/fixTag/search",
+      url: app.fixTagSearchUrl,
       method: "GET",
       data: {
         "sourceTagNameChip": that.data.inputVal
