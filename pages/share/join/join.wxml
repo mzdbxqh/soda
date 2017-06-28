@@ -1,0 +1,23 @@
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">成为组员的好处?</view>
+    <view class="page__desc">
+      <view>· 批量打包下载壁纸</view>
+      <view>· 任意下载大量高质量资源</view>
+      <view>· 指导Soda的进化</view>
+      <view>· 不可描述...</view>
+    </view>
+  </view>
+  <view class="page__bd">
+    <view class="weui-cells__title">填写微信号，稍后基佬将会联系你~~</view>
+    <view class="weui-cells weui-cells_after-title">
+      <view class="weui-cell weui-cell_input">
+        <input class="weui-input" 
+                    placeholder="微信号"
+                    bindchange="inputChange" 
+                    id="tagStr" />
+      </view>
+    </view>
+    <button class="weui-btn" type="primary" bindtap="callJoin">组员申请</button>
+  </view>
+</view>

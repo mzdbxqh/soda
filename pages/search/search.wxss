@@ -17,3 +17,17 @@
 .weui-cell__bd {
   font-size: 14px;
 }
+
+/*加入我们*/
+.join-box {
+  position: fixed;
+  bottom:0;
+  left: 0;
+  width: 100%;
+}
+.join-pic {
+  width: 150px;
+  height: 56px;
+  display: block;
+  margin: 0 auto;
+}

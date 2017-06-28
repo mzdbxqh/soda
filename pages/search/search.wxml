@@ -47,6 +47,10 @@
       </navigator>
     </view>
 
+    <view class="join-box">
+      <image src="http://picture.91xiaban.com/resources/join.png" class="join-pic" catchtap="joinUs"></image>
+    </view>
+
 
   </view>
 </view>

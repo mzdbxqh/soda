@@ -74,6 +74,15 @@ Page({
   },
 
   /**
+   * 跳转到加入我们页面
+   */
+  joinUs: function(){
+    wx.navigateTo({
+      url: '/pages/share/join/join',
+    })
+  },
+
+  /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {

@@ -1,0 +1,53 @@
+page {
+  background-color: rgb(241, 241, 241);
+  background-image: url("http://picture.91xiaban.com/resources/join-bottom-bg.png?201706282114");
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+.page__hd {
+  padding:30rpx;
+  margin: 20rpx 20rpx;
+  background-color: rgb(214,239,206);
+  border-radius: 4px;
+  color:#2C3E50;
+}
+
+.weui-cell__bd {
+  width: 100%;
+}
+.page__title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.page__desc {
+  padding-left: 20rpx;
+  color:#2C3E50;
+  font-size: 30rpx;
+}
+
+/*通用部分*/
+.weui-cells__title {
+  margin-top: 30rpx;
+}
+
+/*输入框部分*/
+.weui-label {
+  font-size: 0.75rem;
+}
+
+/*按钮部分*/
+button {
+  margin: 20rpx;
+}
+button[type="primary"] {
+  background-color: #2C3E50;
+}
+button[type="primary"]:active {
+  background-color: #34495E;
+}
+button[type="primary"]:visited {
+  background-color: #2C3E50;
+}
+button[type="primary"]:hover {
+  background-color: #34495E;
+}
