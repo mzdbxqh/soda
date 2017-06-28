@@ -38,17 +38,15 @@ Page({
   },
   inputConfirm: function(e){
     var that = this
-    var title
     if (that.data.tagList.length == 0){
-      title = "无搜索结果"
+      wx.navigateTo({
+        url: '/pages/search/press/press?tagName=' + e.detail.value,
+      })
     } else {
       wx.navigateTo({
         url: '/pages/search/list/list?tagId=' + that.data.tagList[0].id + '&tagName=' + that.data.tagList[0].name,
       })
     }
-    jsUtil.formErrTip({
-      title: title
-    })
   },
 
   getSearchTip: function(){

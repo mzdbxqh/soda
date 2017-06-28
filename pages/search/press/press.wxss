@@ -1,0 +1,40 @@
+/* press.wxss */
+page {
+  background-color: rgb(241, 241, 241)
+}
+.page__bd {
+  padding:20rpx;
+}
+.weui-cell__bd {
+  width: 100%;
+}
+.pic-box {
+  width:100px;
+  margin:80px auto 20px;
+}
+.pic {
+  width:100px;
+  height:84px;
+}
+.text-box {
+  margin: 0 auto 60px;
+  text-align: center;
+  line-height: 1.5rem;
+  color: #999999;
+}
+/*按钮部分*/
+button {
+  margin: 20rpx;
+}
+button[type="primary"] {
+  background-color: #2C3E50;
+}
+button[type="primary"]:active {
+  background-color: #34495E;
+}
+button[type="primary"]:visited {
+  background-color: #2C3E50;
+}
+button[type="primary"]:hover {
+  background-color: #34495E;
+}

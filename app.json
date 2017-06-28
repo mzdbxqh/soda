@@ -10,6 +10,7 @@
     "pages/search/createlog/createlog",
     "pages/search/list/list",
     "pages/search/detail/detail",
+    "pages/search/press/press",
     "pages/share/share",
     "pages/share/uploader/uploader"
   ],

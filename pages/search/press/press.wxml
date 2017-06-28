@@ -1,0 +1,14 @@
+<!--press.wxml-->
+<view class="page">
+  <view class="page__bd">
+    <view class="pic-box">
+      <image src="http://picture.91xiaban.com/resources/tag-has-no-pic.png?20170628" mode="aspectFit" class="pic"/>
+    </view>
+    <view class="text-box">
+      <view>〒▽〒</view>
+      <view>Soda菌并没有收录「{{tagName}}」的壁纸</view>
+      <view>我们将尽快更新</view>
+    </view>
+    <button class="weui-btn" type="primary" bindtap="callPress">催更</button>
+  </view>
+</view>
