@@ -214,6 +214,16 @@ function formLoading({title}){
   })
 }
 
+// 获取用户昵称
+function getNickName(){
+  wx.getUserInfo({
+    success: function (res) {
+      return res.userInfo.nickName
+    }
+  })
+  return ""
+}
+
 
 module.exports = {
   formatTime: formatTime,
@@ -224,5 +234,6 @@ module.exports = {
   authedUploader: authedUploader,
   formErrTip: formErrTip,
   formSuccessTip: formSuccessTip,
-  formLoading: formLoading
+  formLoading: formLoading,
+  getNickName: getNickName
 }
