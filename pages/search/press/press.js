@@ -31,7 +31,7 @@ Page({
   callPress: function () {
     var that = this
     var postData = {
-      content: "催更:" + that.data.tagName
+      content: "#催更#:" + that.data.tagName
     }
     jsUtil.authedRequest({
       url: app.feedbackUrl,
