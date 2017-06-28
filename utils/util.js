@@ -168,6 +168,10 @@ function authedUploader({url, filePath,formData={},success,fail,complete}){
         } else if (res['statusCode'] === 417) {
           console.log("登录失败")
           fail(data)
+        } else if (res['statusCode'] === 500) {
+          this.formErrTip({
+            title: "真是抱歉，服务器恐怕是被撑爆了"
+          })
         }
       },
       fail: function (res) {
