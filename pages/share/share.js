@@ -19,5 +19,12 @@ Page({
         // complete
       }
     })
-  }
+  },
+  /**
+   * 分享方法
+   */
+  onShareAppMessage: function () {
+    var that = this
+    return app.doDefaultShare()
+  },
 })

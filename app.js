@@ -53,10 +53,39 @@ App({
   audioTap: "http://picture.91xiaban.com/resources/tap.mp3?20170612",
   audioSlide: "http://picture.91xiaban.com/resources/slide.mp3?20170612",
 
+  /**
+   * 封装公用的share方法
+   */
+  doDefaultShare: function(){
+    return this.doShare({
+      title: '我发现了一个还不错的动漫壁纸应用',
+      path: '/pages/index/index'
+    })
+  },
+  doShare: function ({title, path}) {
+    var obj = {
+      title: title,
+      path: path,
+      success: function (res) {
+        wx.showToast({
+          title: "分享成功",
+          icon: 'success'
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: "分享失败",
+          icon: 'fail' //TODO:不支持该ICON
+        })
+      }
+    }
+    return obj
+  },
+
   onLaunch: function () {
     
   },
   globalData:{
-
+    nickName:""
   }
 })

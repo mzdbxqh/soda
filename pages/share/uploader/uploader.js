@@ -1,5 +1,5 @@
-var jsUtil = require('../../../utils/util.js')
 var app = getApp()
+var jsUtil = require('../../../utils/util.js')
 Page({
     data: {
       files: [],
@@ -202,5 +202,16 @@ Page({
           wx.hideLoading()
         }
       })
-    }
+    },
+
+  /**
+   * 分享方法
+   */
+  onShareAppMessage: function () {
+    var that = this
+    return app.doShare({
+      title: '快交出你珍藏的动漫壁纸吧',
+      path: '/pages/share/uploader/uploader'
+    })
+  }, 
 });

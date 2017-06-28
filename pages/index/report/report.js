@@ -1,5 +1,5 @@
-var jsUtil = require('../../../utils/util.js')
 var app = getApp()
+var jsUtil = require('../../../utils/util.js')
 Page({
   data: {
     radioItems: [
@@ -78,5 +78,12 @@ Page({
         }
       }
     })
-  }
+  },
+  /**
+   * 分享方法
+   */
+  onShareAppMessage: function () {
+    var that = this
+    return app.doDefaultShare()
+  },
 });

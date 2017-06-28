@@ -133,19 +133,9 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return {
-      title: 'Soda壁纸-' + that.data.tagName,
-      path: '/pages/index/index',
-      success: function(res) {
-        jsUtil.formSuccessTip({
-          title:"分享成功"
-        })
-      },
-      fail: function(res) {
-        jsUtil.formErrTip({
-          title: "分享失败"
-        })
-      }
-    }
+    return app.doShare({
+      title: '分享一些关于「' + that.data.tagName + '」的壁纸',
+      path: '/pages/search/list/list?tagId=' + that.data.tagId + '&tagName=' + that.data.tagName
+    })
   },
 })

@@ -298,20 +298,10 @@ Page({
   onShareAppMessage: function () {
     console.log("share!")
     var that = this
-    return {
-      title: 'Soda壁纸【微信一定要把图裁掉一半】',
-      path: '/pages/index/index',
-      success: function (res) {
-        jsUtil.formSuccessTip({
-          title: "分享成功"
-        })
-      },
-      fail: function (res) {
-        jsUtil.formErrTip({
-          title: "分享失败"
-        })
-      }
-    }
+    return app.doShare({
+      title: '给大家分享一张我喜欢的壁纸',
+      path: '/pages/index/index?pid=' + that.data.current
+    })
   },
 
   /**

@@ -112,9 +112,13 @@ Page({
   },
 
   /**
-   * 用户点击右上角分享
+   * 分享方法
    */
   onShareAppMessage: function () {
-  
-  }
+    var that = this
+    return app.doShare({
+      title: '欢迎加入Soda壁纸作者团',
+      path: '/pages/share/join/join'
+    })
+  },
 })

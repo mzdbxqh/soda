@@ -84,6 +84,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var that = this
+    var record = that.data.updateList[0].list[0]
+    return app.doShare({
+      title: 'Soda又更新了' + record.count + '张「' + record.fixTag.name + '」的壁纸',
+      path: '/pages/search/updatelog/updatelog'
+    })
   }
 })

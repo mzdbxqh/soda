@@ -1,5 +1,5 @@
-var jsUtil = require('../../../utils/util.js')
 var app = getApp()
+var jsUtil = require('../../../utils/util.js')
 Page({
 
   /**
@@ -149,6 +149,7 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
+    var that = this
+    return app.doDefaultShare()
   }
 })

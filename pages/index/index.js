@@ -1,9 +1,8 @@
 //index.js
-//获取应用实例
+var app = getApp()
 var jsUtil = require('../../utils/util.js')
 var audioUtil = require('../../utils/audio.js')
 var imageUtil = require('../../utils/image.js')
-var app = getApp()
 Page({
   data: { //数据
     originSrc:"", //原图url
@@ -41,8 +40,13 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function () {
-    
+  onLoad: function (options) {
+    var that = this
+    if(options && options.pid){
+      that.setData({
+        current: options.pid
+      })
+    }
   },
 
   /**
@@ -96,6 +100,34 @@ Page({
     }
     jsUtil.authedRequest({
       url: app.getRandomPicUrl,
+      method: "GET",
+      success: function (data) {
+        that.refreshData(data)
+      }
+    })
+  },
+
+  /**
+   * 获取指定图片
+   */
+  getPhoto: function (){
+    var that = this
+
+    wx.showLoading({
+      title: '加载中'
+    })
+
+    var loadBeginTime = Date.parse(new Date()) //本次加载开始时间
+    // 首次请求或大于1秒，记录开始时间
+    that.setData({
+      loadBeginTime: loadBeginTime
+    })
+
+    jsUtil.authedRequest({
+      url: app.getPicUrl,
+      data: {
+        id: that.data.current
+      },
       method: "GET",
       success: function (data) {
         that.refreshData(data)
@@ -344,22 +376,11 @@ Page({
    * 分享方法
    */
   onShareAppMessage: function () {
-    console.log("share!")
     var that = this
-    return {
-      title: 'Soda壁纸【微信一定要把图裁掉一半】',
-      path: '/pages/index/index',
-      success: function(res) {
-        jsUtil.formSuccessTip({
-          title:"分享成功"
-        })
-      },
-      fail: function(res) {
-        jsUtil.formErrTip({
-          title: "分享失败"
-        })
-      }
-    }
+    return app.doShare({
+      title: '给大家分享一张我觉得不错的壁纸',
+      path: '/pages/index/index?pid=' + that.data.current
+    })
   },
 
   /**
@@ -411,29 +432,10 @@ Page({
     var that = this
     wx.showActionSheet({
       // itemList: ['发送给文武百官', '朕认为此图不妥','来人，朕有要事宣布'],
-      itemList: ['发送给朋友', '反馈', '举报'],
+      itemList: ['反馈', '举报'],
       success: function(res) {
         switch(res.tapIndex){
           case 0:
-            jsUtil.formErrTip({
-              title:"微信让点右上角的···按钮"
-            })
-          break;
-          case 2:
-            wx.navigateTo({
-              url: '/pages/index/report/report?pid=' + that.data.current,
-              success: function(res){
-                // success
-              },
-              fail: function(res) {
-                // fail
-              },
-              complete: function(res) {
-                // complete
-              }
-            })
-          break;
-          case 1:
             wx.navigateTo({
               url: '/pages/index/feedback/feedback',
               success: function (res) {
@@ -447,6 +449,20 @@ Page({
               }
             })
           break;
+          case 1:
+            wx.navigateTo({
+              url: '/pages/index/report/report?pid=' + that.data.current,
+              success: function (res) {
+                // success
+              },
+              fail: function (res) {
+                // fail
+              },
+              complete: function (res) {
+                // complete
+              }
+            })
+            break;
           default:
         }
       },
@@ -488,7 +504,15 @@ Page({
           })
           jsUtil.login(
             function () {
-              that.getRandomPhoto()
+              /**
+               * 未指定图片 - 随机获取
+               * 从共享或二维码进入时已指定图片 - 加载指定图片
+               */
+              if(!that.data.current){
+                that.getRandomPhoto()
+              } else {
+                that.getPhoto()
+              }
             }
           )
         },

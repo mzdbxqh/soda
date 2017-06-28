@@ -10,6 +10,7 @@ Page({
   data: {
     pageNo: 0,
     pageCount: 0,
+    userId: "",
     pictureList: []
   },
 
@@ -18,12 +19,11 @@ Page({
    */
   onLoad: function (options) {
     var that = this
-    // if (!options.tagId) {
-    //   that.setData({
-    //     tagId: "e9cc77eb218c401d984d17da0a31d96f",
-    //     tagName: "新海诚"
-    //   })
-    // }
+    if (options && options.userId) {
+      that.setData({
+        userId: options.userId
+      })
+    }
   },
 
   /**
@@ -54,7 +54,8 @@ Page({
       url: app.picCollectListUrl,
       method: "POST",
       data: {
-        "pageNo": pageNo
+        "pageNo": pageNo,
+        "userId": that.data.userId
       },
       success: function (data) {
         var newList = new Array()
@@ -72,7 +73,8 @@ Page({
         that.setData({
           pictureList: list,
           pageNo: data.pageNo,
-          pageCount: data.pageCount
+          pageCount: data.pageCount,
+          userId: data.userId
         })
         if (list.length === 0) {
           jsUtil.formSuccessTip({
@@ -129,6 +131,11 @@ Page({
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
-  
-  }
+    var that = this
+    console.log(that.data.userId)
+    return app.doShare({
+      title: app.globalData.nickName + '的壁纸收藏',
+      path: '/pages/search/collectlog/collectlog?userId=' + that.data.userId
+    })
+  },
 })

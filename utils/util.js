@@ -47,6 +47,7 @@ function login(callBack){
         wx.getUserInfo({
           withCredentials:true,
           success: function(res2) {
+            app.globalData.nickName = res2.userInfo.nickName
             var header = {
               'content-type': 'application/x-www-form-urlencoded',
               'isWechat': '1'
@@ -191,7 +192,7 @@ function authedUploader({url, filePath,formData={},success,fail,complete}){
 function formErrTip({title,duration = 1500}){
   wx.showToast({
     title: title,
-    icon: 'fail',
+    icon: 'fail', //TODO:不支持该ICON
     duration: duration
   })
 }
@@ -214,17 +215,6 @@ function formLoading({title}){
   })
 }
 
-// 获取用户昵称
-function getNickName(){
-  wx.getUserInfo({
-    success: function (res) {
-      return res.userInfo.nickName
-    }
-  })
-  return ""
-}
-
-
 module.exports = {
   formatTime: formatTime,
   setSessionId: setSessionId,
@@ -234,6 +224,5 @@ module.exports = {
   authedUploader: authedUploader,
   formErrTip: formErrTip,
   formSuccessTip: formSuccessTip,
-  formLoading: formLoading,
-  getNickName: getNickName
+  formLoading: formLoading
 }

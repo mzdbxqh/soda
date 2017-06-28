@@ -1,5 +1,5 @@
-var jsUtil = require("../../utils/util.js")
 var app = getApp()
+var jsUtil = require("../../utils/util.js")
 var t
 Page({
   data: {
@@ -79,6 +79,17 @@ Page({
   joinUs: function(){
     wx.navigateTo({
       url: '/pages/share/join/join',
+    })
+  },
+
+  /**
+   * 分享方法
+   */
+  onShareAppMessage: function () {
+    var that = this
+    return app.doShare({
+      title: '绅士模式是什么鬼？我似乎发现了什么了不得的东西...',
+      path: '/pages/search/search'
     })
   },
 
