@@ -353,17 +353,12 @@ Page({
     var that = this
     wx.showActionSheet({
       // itemList: ['发送给文武百官', '朕认为此图不妥','来人，朕有要事宣布'],
-      itemList: ['发送给朋友', '反馈', '举报'],
+      itemList: ['反馈', '举报'],
       success: function (res) {
         switch (res.tapIndex) {
           case 0:
-            jsUtil.formErrTip({
-              title: "微信让点右上角的···按钮"
-            })
-            break;
-          case 2:
             wx.navigateTo({
-              url: '/pages/index/report/report?pid=' + that.data.current,
+              url: '/pages/index/feedback/feedback',
               success: function (res) {
                 // success
               },
@@ -377,7 +372,7 @@ Page({
             break;
           case 1:
             wx.navigateTo({
-              url: '/pages/index/feedback/feedback',
+              url: '/pages/index/report/report?pid=' + that.data.current,
               success: function (res) {
                 // success
               },

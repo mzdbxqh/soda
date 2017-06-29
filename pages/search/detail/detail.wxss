@@ -48,6 +48,7 @@
 }
 .weui-flex__item {
   height: 120rpx;
+  line-height: 1.1rem;
 }
 .weui-flex__item image {
   width: 50rpx;
@@ -60,6 +61,15 @@
   text-align: center;
   font-size: 0.675rem;
   color:#fff;
+}
+button.weui-flex__item {
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  line-height: 1.1rem;
+}
+button.weui-flex__item::after {
+  content: none;
 }
 
 

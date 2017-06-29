@@ -67,6 +67,10 @@
       <image wx:else src="/images/love.png"></image>
       <text>{{favCount}}</text>
     </view>
+    <button open-type="share" class="weui-flex__item">
+      <image src="/images/share.png"></image>
+      <text>分享</text>
+    </button>
     <view catchtap="actionSheet" class="weui-flex__item">
       <image src="/images/more.png"></image>
       <text>更多</text>
