@@ -56,13 +56,8 @@ App({
   /**
    * 封装公用的share方法
    */
-  doDefaultShare: function(){
-    return this.doShare({
-      title: '我发现了一个还不错的动漫壁纸应用',
-      path: '/pages/index/index'
-    })
-  },
-  doShare: function ({title, path}) {
+  doShare: function ({title = '我发现了一个还不错的动漫壁纸应用', 
+                      path = '/pages/index/index'}) {
     var obj = {
       title: title,
       path: path,

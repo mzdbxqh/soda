@@ -132,7 +132,6 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    console.log(that.data.userId)
     return app.doShare({
       title: app.globalData.nickName + '的壁纸收藏',
       path: '/pages/search/collectlog/collectlog?userId=' + that.data.userId

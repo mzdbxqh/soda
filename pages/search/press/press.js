@@ -110,6 +110,6 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare()
+    return app.doShare({})
   }
 })

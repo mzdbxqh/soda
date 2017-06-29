@@ -84,6 +84,6 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doDefaultShare()
+    return app.doShare({})
   },
 });
