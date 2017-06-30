@@ -65,6 +65,7 @@ Page({
             src: app.picServerUrl + data.list[i].filePath + data.list[i].fileName + "!400",
             width: imageSize.imageWidth,
             height: imageSize.imageHeight,
+            adopted: data.list[i].adopted,
             id: data.list[i].id
           }
         }

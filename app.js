@@ -3,7 +3,7 @@ App({
   /**
    * 全局Url
    */
-  // serverUrl = "http://127.0.0.1:8080/soda/",
+  // serverUrl: "http://127.0.0.1:8080/soda/",
   serverUrl: "https://www.91xiaban.com/", // 服务器Url
   picServerUrl: "https://soda-1253373459.image.myqcloud.com", // 图片服务器Url
 
