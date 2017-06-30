@@ -2,7 +2,7 @@
     <view class="page__hd">
         <image src="/images/logo.png" class="logo"></image>
         <text class="about">
-        Soda致力于打造「高品质动漫壁纸聚合平台」
+        <!--Soda致力于打造「高品质动漫壁纸聚合平台」
         希望能通过大家的分享，让Soda更近一步
 
         我们希望能让更多人能下载到
@@ -12,11 +12,19 @@
         也希望，大家一起维护好Soda
         如果发现违规图片。管理员可能会进行删除哟~
 
-        Now，↓↓↓
+        Now，↓↓↓-->
+        Soda致力于打造「高品质动漫壁纸聚合平台」
+        希望能通过大家分享，让Soda更近一步
+
+        我们希望能让更多人能下载到
+        「高清」、「漂亮」的动漫壁纸
+        所以成本再高，我们也不会压缩图片质量
+
+        我们将会认真审核，谢谢大家的支持
         </text>
     </view>
     <view class="page__bd  page__bd_spacing">
         
-        <button class="weui-btn" type="primary" bindtap="callUploader" hover-class="button-hover">共享我的壁纸</button>
+        <button class="weui-btn" type="primary" bindtap="callUploader" hover-class="button-hover">投稿</button>
     </view>
 </view>

@@ -9,11 +9,23 @@
   border-radius: 5rpx;
   box-shadow: 5rpx 5rpx 3rpx #ccc;
   float: left;
+  position: relative;
   overflow: hidden;
 }
-.pic-box image {
-  position: relative;
+.pic-box .pic {
+  position: absolute;
+  display: block;
+  z-index: 1;
   left:50%;
+}
+.pic-box .pic-tip {
+  position: absolute;
+  display: block;
+  left:10px;
+  bottom:10px;
+  width: 42px;
+  height: 18px;
+  z-index: 99;
 }
 
 .page__bd {

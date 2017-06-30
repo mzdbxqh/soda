@@ -1,6 +1,10 @@
+.page__hd {
+  padding: 70rpx 20rpx;
+}
 .about {
     display: block;
-    font-size: 0.7rem;
+    font-size: 28rpx;
+    color: #2C3E50;
     text-align: center;
 }
 button[type="primary"] {

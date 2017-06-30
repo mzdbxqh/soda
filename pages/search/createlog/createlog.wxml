@@ -8,7 +8,10 @@
   
     <block wx:for="{{pictureList}}" wx:key="*this">
       <navigator url="/pages/search/detail/detail?pid={{item.id}}" class="pic-box">
-        <image src="{{item.src}}" style="width: {{item.width}}rpx; height: {{item.height}}rpx;margin-left: {{-item.width/2}}rpx" />
+        <image src="{{item.src}}" style="width: {{item.width}}rpx; height: {{item.height}}rpx;margin-left: {{-item.width/2}}rpx" class="pic" />
+        <block wx:if="{{item.adopted}}">
+          <image src="/images/adopted.png" class="pic-tip" hidden="{{item.adopted}}"/>
+        </block>
       </navigator>
     </block>
     <view class="page__bd__bottom"></view>
