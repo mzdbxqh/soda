@@ -1,6 +1,6 @@
 <!--图片部分-->
 <block wx:if="{{isX}}">
-  <scroll-view scroll-x style="width: {{boxwidth}}px;" scroll-left="{{scrollLeft}}">
+  <scroll-view scroll-x style="width: {{boxwidth}}px;height:{{imageheight}}px" scroll-left="{{scrollLeft}}">
     <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
     src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
     hidden="{{photoHidden}}" class="scroll-view-item" />
