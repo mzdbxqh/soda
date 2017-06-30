@@ -31,14 +31,16 @@
       <view class="weui-cells__title">添加标签（输入后点击“下一项”，删除请点击标签）</view>
       <view class="weui-cells weui-cells_after-title">
         <view class="weui-cell weui-cell_input tag-cell">
-          <view class="tags">
-            <block wx:for="{{tags}}" wx:key="*this">
-              <text class="label label-default"
-                bindtap="removeTag" 
-                data-index="{{index}}"
-                id="tag-{{index}}">{{item}}</text>
-            </block>
-          </view>
+          <block wx:if="{{tags.length!=0}}">
+            <view class="weui-cell__bd tags">
+              <block wx:for="{{tags}}" wx:key="*this">
+                <text class="label label-default"
+                  bindtap="removeTag" 
+                  data-index="{{index}}"
+                  id="tag-{{index}}">{{item}}</text>
+              </block>
+            </view>
+          </block>
           <!--comfirm-type 右下角按钮为下一个-->
           <!--confirm-hold 点右下角按钮后键盘不收起 -->
           <view class="weui-cell__bd tag-input">

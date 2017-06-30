@@ -48,6 +48,8 @@ page {
 .label {
   margin-right: 15rpx;
   margin-top: 15rpx;
+  line-height: 1.2;
+  padding:.4em .6em .3em;
   display: inline-block;
 }
 .tag-input {
