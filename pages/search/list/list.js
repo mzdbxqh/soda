@@ -85,7 +85,12 @@ Page({
         if (!that.data.pictureList || that.data.pictureList.length ===0){
           jsUtil.formErrTip({
             title: "抱歉，尚未收集该番的壁纸",
-            duration: 4000
+            duration: 1500,
+            callback: function(){
+              wx.navigateTo({
+                url: '/pages/search/press/press?tagName=' + that.data.tagName,
+              })
+            }
           })
         }
       }

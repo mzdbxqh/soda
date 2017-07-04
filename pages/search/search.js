@@ -1,6 +1,7 @@
 var app = getApp()
 var jsUtil = require("../../utils/util.js")
 var t
+var searching = true
 Page({
   data: {
     inputShowed: false,
@@ -31,6 +32,7 @@ Page({
     that.setData({
       inputVal: e.detail.value
     });
+    searching = true
     if(t){
       clearTimeout(t)
     }
@@ -38,6 +40,12 @@ Page({
   },
   inputConfirm: function(e){
     var that = this
+    if (searching || !that.data.inputVal) {
+      jsUtil.formErrTip({
+        title: "正在匹配关键词，请稍后"
+      })
+      return
+    }
     if (that.data.tagList.length == 0){
       wx.navigateTo({
         url: '/pages/search/press/press?tagName=' + e.detail.value,
@@ -69,6 +77,7 @@ Page({
         that.setData({
           tagList: data.list
         })
+        searching = false
       }
     })
   },

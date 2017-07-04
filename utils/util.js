@@ -189,14 +189,18 @@ function authedUploader({url, filePath,formData={},success,fail,complete}){
 }
 
 //表单提示
-function formErrTip({title,duration = 1500}){
+function formErrTip({title,duration = 1500,callback = function(){}}){
   wx.showToast({
     title: title,
     icon: 'fail', //TODO:不支持该ICON
-    duration: duration
+    duration: duration,
+    success: function(){
+      // bug解决之前手动延时
+      setTimeout(callback,duration)
+    }
   })
 }
-function formSuccessTip({title,duration = 1500,callback}){
+function formSuccessTip({title,duration = 1500,callback = function(){}}){
   wx.showToast({
     title: title,
     icon: 'success',
