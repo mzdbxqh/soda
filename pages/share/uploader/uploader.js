@@ -135,6 +135,7 @@ Page({
      * 上传
      */
     callUploader:function(e){
+      console.log(e.detail.formId)
       var that = this;
       if (that.data.files.length === 0){
         jsUtil.formErrTip({
@@ -173,7 +174,8 @@ Page({
               "hasOrigin": that.data.isOrigin ? "1" : "0",
               "tags": that.data.tags,
               "originThird": that.data.inputContent["origin"] ? that.data.inputContent["origin"]:"",
-              "originAuthor": that.data.inputContent["author"] ? that.data.inputContent["author"]:""
+              "originAuthor": that.data.inputContent["author"] ? that.data.inputContent["author"]:"",
+              "formId": e.detail.formId
             }
             jsUtil.authedRequest({
               url: app.picInfoUploadUrl,
@@ -189,13 +191,13 @@ Page({
                   }
                 })
               },
-              fail:function(e){
+              fail:function(res){
 
               }
             })
           }
         },
-        fail:function(e){
+        fail:function(res){
           console.log("fail")
         },
         complete: function (res) {
