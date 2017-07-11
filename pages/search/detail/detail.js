@@ -72,8 +72,8 @@ Page({
           author = "原创"
         } else {
           author = data.originThird
-          author += author && data.author ? ">>" : ""
-          author += data.author || ""
+          author += author && data.originAuthor ? " ▪ " : ""
+          author += data.originAuthor || ""
           author = author || data.originUrl
           author = author || "未知来源"
         }
