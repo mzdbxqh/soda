@@ -36,7 +36,7 @@ Page({
     if(t){
       clearTimeout(t)
     }
-    t = setTimeout(getSearchTip,200)
+    t = setTimeout(getSearchTip,150)
   },
   inputConfirm: function(e){
     var that = this
