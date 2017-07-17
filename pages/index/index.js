@@ -58,15 +58,6 @@ Page({
       duration: 50000
     })
   },
-
-  /**
-   * 长按刷新按钮
-   * 尚未解决自定义延时长度的问题
-   * 尚未解决长按松开后仍触发点按事件的问题
-   */
-  switchMode: function(e) {
-    console.log(e)
-  },
   
   /**
    * 随机刷新图片
@@ -477,6 +468,7 @@ Page({
    */
   onReady: function () {
     var that = this
+    console.log("onReady")
     //检测版本，版本过低的话提示然后不进行下一步
     try {
       wx.getSystemInfo({
@@ -520,5 +512,14 @@ Page({
     } catch (e) {
       // Do something when catch error
     }
-  }
+  },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    if(this.data.times > 0){
+      this.getRandomPhoto()
+    }
+  },
 })

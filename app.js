@@ -28,6 +28,7 @@ App({
   picCollectCancelUrl: "a/wp/picture/collect/del", // 取消收藏
   picUploadUrl: "a/wp/picture/import", // 上传图片
   picInfoUploadUrl: "a/wp/picture/saveByWechat", // 上传图片信息
+  picSwitchModeUrl: "a/wp/picture/switch", // 切换图片模式
 
   /**
    * 标签操作接口

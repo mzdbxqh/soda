@@ -1,5 +1,6 @@
 var app = getApp()
 var jsUtil = require("../../utils/util.js")
+var mode = require("../../utils/mode.js")
 var t
 var searching = true
 Page({
@@ -40,6 +41,25 @@ Page({
   },
   inputConfirm: function(e){
     var that = this
+
+    // 尝试匹配开关关键词
+    if (mode.isSwitch({
+      str:that.data.inputVal,
+      callback: function(){
+        that.setData({ // 初始化输入框
+          inputVal: "",
+          inputShowed: false,
+          tagList: []
+        })
+        searching = false; // 标记状态
+        wx.switchTab({
+          url: '/pages/index/index',
+        })
+      }
+    })) {
+      return
+    }
+
     if (searching || !that.data.inputVal) {
       jsUtil.formErrTip({
         title: "正在匹配关键词，请稍后"
@@ -57,16 +77,12 @@ Page({
     }
   },
 
+  /**
+   * 获取搜索提示
+   */
   getSearchTip: function(){
     var that = this
-    if(that.data.inputVal == "题材"
-      || that.data.inputVal == "题材:"
-      || that.data.inputVal == "题材："
-      ||that.data.inputVal == "角色"
-      || that.data.inputVal == "角色:"
-      || that.data.inputVal == "角色：") {
-        return
-      }
+
     jsUtil.authedRequest({
       url: app.fixTagSearchUrl,
       method: "GET",
