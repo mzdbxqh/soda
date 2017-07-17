@@ -296,11 +296,11 @@ Page({
    * 分享方法
    */
   onShareAppMessage: function () {
-    console.log("share!")
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '给大家分享一张我喜欢的壁纸',
-      path: '/pages/index/index?pid=' + that.data.current
+      path: '/pages/index/index?pid=' + that.data.current,
+      page: "detail"
     })
   },
 

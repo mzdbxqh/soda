@@ -138,9 +138,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '分享一些关于「' + that.data.tagName + '」的壁纸',
-      path: '/pages/search/list/list?tagId=' + that.data.tagId + '&tagName=' + that.data.tagName
+      path: '/pages/search/list/list?tagId=' + that.data.tagId + '&tagName=' + that.data.tagName,
+      page: "list"
     })
   },
 })

@@ -3,8 +3,8 @@ App({
   /**
    * 全局Url
    */
-  // serverUrl: "http://127.0.0.1:8080/soda/",
-  serverUrl: "https://www.91xiaban.com/", // 服务器Url
+  serverUrl: "http://127.0.0.1:8080/soda/",
+  // serverUrl: "https://www.91xiaban.com/", // 服务器Url
   // picServerUrl: "https://soda-1253373459.image.myqcloud.com", // 图片服务器Url
   picServerUrl: "https://picture.91xiaban.com/", // 图片服务器Url
 
@@ -47,6 +47,7 @@ App({
    */
   picLoadConfirmUrl: "a/wp/picture/confirm", // 图片加载确认接口
   picShowOriginUrl: "a/wp/picture/showOriginPic", // 显示大图行为接口
+  shareUrl: "a/wp/picture/share", // 分享行为接口
 
   /**
    * 资源地址
@@ -54,30 +55,6 @@ App({
   audioCoverPic: 'http://picture.91xiaban.com/bottom-tab-bar.png',
   audioTap: "http://picture.91xiaban.com/resources/tap.mp3?20170612",
   audioSlide: "http://picture.91xiaban.com/resources/slide.mp3?20170612",
-
-  /**
-   * 封装公用的share方法
-   */
-  doShare: function ({title = '我发现了一个还不错的动漫壁纸应用', 
-                      path = '/pages/index/index'}) {
-    var obj = {
-      title: title,
-      path: path,
-      success: function (res) {
-        wx.showToast({
-          title: "分享成功",
-          icon: 'success'
-        })
-      },
-      fail: function (res) {
-        wx.showToast({
-          title: "分享失败",
-          icon: 'fail' //TODO:不支持该ICON
-        })
-      }
-    }
-    return obj
-  },
 
   onLaunch: function () {
     

@@ -240,6 +240,41 @@ function checkWxAuth(callback) {
   })
 }
 
+/**
+ * 封装公用的share方法
+ */
+function doShare({title = '我发现了一个还不错的动漫壁纸应用',
+  path = '/pages/index/index',
+  page = ''}) {
+  var obj = {
+    title: title,
+    path: path,
+    success: function (res) {
+      authedRequest({
+        url: app.shareUrl,
+        data: {
+          page: page,
+          title: title,
+          path: path
+        },
+        success: function (data) {
+          wx.showToast({
+            title: "分享成功",
+            icon: 'success'
+          })
+        }
+      })
+    },
+    fail: function (res) {
+      wx.showToast({
+        title: "分享失败",
+        icon: 'fail' //TODO:不支持该ICON
+      })
+    }
+  }
+  return obj
+}
+
 module.exports = {
   setSessionId: setSessionId,
   getSessionId: getSessionId,
@@ -250,5 +285,6 @@ module.exports = {
   formSuccessTip: formSuccessTip,
   formLoading: formLoading,
   checkVersion: checkVersion,
-  checkWxAuth: checkWxAuth
+  checkWxAuth: checkWxAuth,
+  doShare: doShare
 }

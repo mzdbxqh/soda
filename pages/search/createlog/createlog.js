@@ -133,9 +133,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: app.globalData.nickName + '发布的动漫壁纸',
-      path: '/pages/search/createlog/createlog?userId=' + that.data.userId
+      path: '/pages/search/createlog/createlog?userId=' + that.data.userId,
+      page: "createlog"
     })
   }
 })

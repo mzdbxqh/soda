@@ -1,5 +1,6 @@
 // error.js
 var app = getApp()
+var jsUtil = require('../../../utils/util.js')
 Page({
 
   /**
@@ -63,6 +64,8 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this 
-    return app.doShare({})
+    return jsUtil.doShare({
+      page:"error"
+    })
   }
 })

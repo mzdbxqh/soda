@@ -211,9 +211,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '快交出你珍藏的动漫壁纸吧',
-      path: '/pages/share/uploader/uploader'
+      path: '/pages/share/uploader/uploader',
+      page: "uploader"
     })
   }, 
 });

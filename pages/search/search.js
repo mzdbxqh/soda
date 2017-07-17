@@ -112,9 +112,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '绅士模式是什么鬼？我似乎发现了什么了不得的东西...',
-      path: '/pages/search/search'
+      path: '/pages/search/search',
+      page: "search"
     })
   },
 

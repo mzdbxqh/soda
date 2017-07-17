@@ -1,4 +1,5 @@
 var app = getApp()
+var jsUtil = require('../../utils/util.js')
 Page({
   /**
    * 页面的初始数据
@@ -25,6 +26,8 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({})
+    return jsUtil.doShare({
+      page: "share"
+    })
   },
 })

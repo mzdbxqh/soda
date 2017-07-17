@@ -110,6 +110,8 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({})
+    return jsUtil.doShare({
+      page:"press"
+    })
   }
 })

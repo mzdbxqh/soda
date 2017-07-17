@@ -359,9 +359,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '给大家分享一张我觉得不错的壁纸',
-      path: '/pages/index/index?pid=' + that.data.current
+      path: '/pages/index/index?pid=' + that.data.current,
+      page: "index"
     })
   },
 

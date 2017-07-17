@@ -86,9 +86,10 @@ Page({
   onShareAppMessage: function () {
     var that = this
     var record = that.data.updateList[0].list[0]
-    return app.doShare({
+    return jsUtil.doShare({
       title: 'Soda又更新了' + record.count + '张「' + record.fixTag.name + '」的壁纸',
-      path: '/pages/search/updatelog/updatelog'
+      path: '/pages/search/updatelog/updatelog',
+      page: "updatelog"
     })
   }
 })

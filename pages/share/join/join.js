@@ -116,9 +116,10 @@ Page({
    */
   onShareAppMessage: function () {
     var that = this
-    return app.doShare({
+    return jsUtil.doShare({
       title: '欢迎加入Soda壁纸作者团',
-      path: '/pages/share/join/join'
+      path: '/pages/share/join/join',
+      page: "join"
     })
   },
 })
