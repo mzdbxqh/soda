@@ -212,7 +212,7 @@ function checkVersion(callback) {
       var vers = SDKVersion.split(".")
       if(vers[0] == 1 && vers[1] < 2){
         formErrTip({
-          title: "当前微信版本过低，请升级到最新版以支持所有功能",
+          title: "当前微信版本过低，请升级",
           duration: 50000
         })
       } else {
