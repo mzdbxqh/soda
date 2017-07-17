@@ -5,23 +5,6 @@
  * 3、文本格式化
  */
 var app = getApp()
-function formatTime(date) {
-  var year = date.getFullYear()
-  var month = date.getMonth() + 1
-  var day = date.getDate()
-
-  var hour = date.getHours()
-  var minute = date.getMinutes()
-  var second = date.getSeconds()
-
-
-  return [year, month, day].map(formatNumber).join('/') + ' ' + [hour, minute, second].map(formatNumber).join(':')
-}
-
-function formatNumber(n) {
-  n = n.toString()
-  return n[1] ? n : '0' + n
-}
 
 /**
  * 读写sessionID
@@ -219,8 +202,45 @@ function formLoading({title}){
   })
 }
 
+/**
+ * 校对微信基础库版本
+ */
+function checkVersion(callback) {
+  wx.getSystemInfo({
+    success: function (res) {
+      var SDKVersion = res.SDKVersion
+      var vers = SDKVersion.split(".")
+      if(vers[0] == 1 && vers[1] < 2){
+        formErrTip({
+          title: "当前微信版本过低，请升级到最新版以支持所有功能",
+          duration: 50000
+        })
+      } else {
+        callback()
+      }
+    }
+  })
+}
+
+/**
+ * 校对用户授权
+ */
+function checkWxAuth(callback) {
+  wx.getSetting({
+    success(res) {
+      if (!res['scope.userInfo']) {
+        wx.authorize({
+          scope: 'scope.userInfo',
+          success() {
+            callback()
+          }
+        })
+      }
+    }
+  })
+}
+
 module.exports = {
-  formatTime: formatTime,
   setSessionId: setSessionId,
   getSessionId: getSessionId,
   login: login,
@@ -228,5 +248,7 @@ module.exports = {
   authedUploader: authedUploader,
   formErrTip: formErrTip,
   formSuccessTip: formSuccessTip,
-  formLoading: formLoading
+  formLoading: formLoading,
+  checkVersion: checkVersion,
+  checkWxAuth: checkWxAuth
 }

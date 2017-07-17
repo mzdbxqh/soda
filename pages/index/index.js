@@ -49,15 +49,6 @@ Page({
     }
   },
 
-  /**
-   * 更新版本的提示
-   */
-  updateTip: function () {
-    jsUtil.formErrTip({
-      title: "当前微信版本过低，请升级到最新版以支持所有功能",
-      duration: 50000
-    })
-  },
   
   /**
    * 随机刷新图片
@@ -468,50 +459,28 @@ Page({
    */
   onReady: function () {
     var that = this
-    console.log("onReady")
     //检测版本，版本过低的话提示然后不进行下一步
-    try {
-      wx.getSystemInfo({
-        success: function (res) {
-          var version = res.version
-          var vers = version.split(".")
-          if (vers[0] < 6) { //大版本必须6以上
-            that.updateTip()
-            return
-          } else if (vers[0] == 6) {
-            if (vers[1] < 5) { //大版本为6时，中版本为5以上
-              that.updateTip()
-              return
-            } else if (vers[1] == 5) {
-              if (vers[2] < 6) { //中版本为5时，小版本为8或以上
-                that.updateTip()
-                return
-              }
+    jsUtil.checkVersion(function(){
+      jsUtil.checkWxAuth(function(){
+        wx.showLoading({
+          title: '正在接入',
+          mask: true
+        })
+        jsUtil.login(
+          function () {
+            /**
+             * 未指定图片 - 随机获取
+             * 从共享或二维码进入时已指定图片 - 加载指定图片
+             */
+            if (!that.data.current) {
+              that.getRandomPhoto()
+            } else {
+              that.getPhoto()
             }
           }
-          
-          wx.showLoading({
-            title: '正在接入',
-            mask: true
-          })
-          jsUtil.login(
-            function () {
-              /**
-               * 未指定图片 - 随机获取
-               * 从共享或二维码进入时已指定图片 - 加载指定图片
-               */
-              if(!that.data.current){
-                that.getRandomPhoto()
-              } else {
-                that.getPhoto()
-              }
-            }
-          )
-        },
-      })
-    } catch (e) {
-      // Do something when catch error
-    }
+        )
+      }) 
+    })
   },
 
   /**
