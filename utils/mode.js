@@ -8,13 +8,15 @@ var app = getApp()
 var ENUM = {
   MAN: {
     code:2,
-    msg:"绅士模式",
+    openMsg:"开启#Hentai 标签浏览权限，用绅士角度看世界，但拒绝H。关闭请搜索“关闭Hentai”",
+    closeMsg:"确认关闭Hentai模式吗？",
     str:"HENTAI"
   },
   WOMAN: {
     code:3,
-    msg:"???模式",
-    str:"???"
+    openMsg: "开启#biubiubiu 标签浏览权限，进入激萌的世界。关闭请搜索“关闭biubiubiu”",
+    closeMsg: "确认关闭Hentai模式吗？",
+    str:"biubiubiu"
   }
 }
 
@@ -22,13 +24,11 @@ var ENUM = {
 var INS = {
   OPEN: {
     str: "open",
-    msg: "开启",
-    reg: new RegExp("^开启","g")
+    reg: new RegExp("^开启|^进入|^召唤","g")
   },
   CLOSE: {
     str: "close",
-    msg: "关闭",
-    reg: new RegExp("^关闭", "g")
+    reg: new RegExp("^关闭|^退出|^结束|^封印", "g")
   }
 }
 
@@ -41,10 +41,10 @@ function isSwitch({str,callback}) {
   if(!str) return false // 判空
   
   var ins = ""
-  if(str.substring(0,2) == INS.OPEN.msg){ // 开
+  if(INS.OPEN.reg.exec(str)){ // 开
     ins = INS.OPEN
     str = str.replace(INS.OPEN.reg, "")
-  } else if(str.substring(0,2) == INS.CLOSE.msg){ // 关
+  } else if (INS.CLOSE.reg.exec(str)){ // 关
     ins = INS.CLOSE
     str = str.replace(INS.CLOSE.reg, "")
   } else { // 非特殊指令
@@ -64,9 +64,15 @@ function isSwitch({str,callback}) {
  * 切换模式逻辑
  */
 function switchMode(ins, mode, callback) {
+  var msg
+  if(ins.str == "open") {
+    msg = mode.openMsg
+  } else {
+    msg = mode.closeMsg
+  }
   wx.showModal({
     title: '提示',
-    content: '是否' + ins.msg + '「' + mode.msg + '」',
+    content: msg,
     success: function (res) {
       if (res.confirm) {
         jsUtil.authedRequest({
@@ -82,7 +88,7 @@ function switchMode(ins, mode, callback) {
         });
       } else if (res.cancel) {
         wx.showToast({
-          title: '放弃进入',
+          title: '已放弃',
         })
       }
     }
