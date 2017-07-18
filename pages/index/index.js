@@ -158,9 +158,10 @@ Page({
     /**
      * 修正url
      */
-    var picSrc, picOriginSrc
-    picOriginSrc = app.picServerUrl + data.filePath + data.fileName
-    picSrc = picOriginSrc + imageUtil.getThumb({
+    var picSrc, picOriginSrc, picFixSrc
+    picOriginSrc = app.picDownloadUrl + data.filePath + data.fileName
+    picFixSrc = app.picServerUrl + data.filePath + data.fileName
+    picSrc = picFixSrc + imageUtil.getThumb({
       width:data.pictureWidth,
       height:data.pictureHeight
     })
