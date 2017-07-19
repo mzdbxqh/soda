@@ -52,6 +52,7 @@ Page({
           tagList: []
         })
         searching = false; // 标记状态
+        app.globalData.needRefreshPic = true
         wx.switchTab({
           url: '/pages/index/index',
         })

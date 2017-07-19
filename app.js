@@ -61,6 +61,7 @@ App({
     
   },
   globalData:{
+    needRefreshPic: false,
     nickName:""
   }
 })
