@@ -47,6 +47,11 @@ Page({
         current: options.pid
       })
     }
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res)
+      }
+    })
   },
 
   
@@ -78,7 +83,8 @@ Page({
     })
 
     if (this.data.times != 0) {
-      audioUtil.playTap()
+      // 暂时去掉音效
+      // audioUtil.playTap()
     }
     jsUtil.authedRequest({
       url: app.getRandomPicUrl,
@@ -264,11 +270,12 @@ Page({
       scrollLeft: scrollLeft,
       scrollTop: scrollTop
     })
-    if(this.data.times > 1){
-      setTimeout(function(){
-        audioUtil.playSlide()
-      },100)
-    }
+    // 暂时去掉音效
+    // if(this.data.times > 1){
+    //   setTimeout(function(){
+    //     audioUtil.playSlide()
+    //   },100)
+    // }
   },
 
   /**
