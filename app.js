@@ -36,6 +36,7 @@ App({
    * 标签操作接口
    */
   fixTagSearchUrl: "a/wp/fixTag/search", //搜索修正标签
+  switchTagSearchUrl: "a/wp/fixTag/searchSwitchTag", //搜索开关标签
 
   /**
    * 辅助页面接口

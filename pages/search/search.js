@@ -126,4 +126,19 @@ Page({
   onReady: function () {
     
   },
+
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
+    if(mode.isEmpty){
+      jsUtil.authedRequest({
+        url: app.switchTagSearchUrl,
+        method: "GET",
+        success: function (data) {
+          mode.unpackTagList(data)
+        }
+      })
+    }
+  }
 });

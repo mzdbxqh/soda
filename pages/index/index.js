@@ -47,11 +47,6 @@ Page({
         current: options.pid
       })
     }
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res)
-      }
-    })
   },
 
   

@@ -4,21 +4,9 @@
 
 import jsUtil from "util.js"
 var app = getApp()
+
 // 模式常量
-var ENUM = {
-  MAN: {
-    code:2,
-    openMsg:"开启#Hentai 标签浏览权限，用绅士角度看世界，但拒绝H。关闭请搜索“关闭Hentai”",
-    closeMsg:"确认关闭Hentai模式吗？",
-    str:"HENTAI"
-  },
-  WOMAN: {
-    code:3,
-    openMsg: "开启#biubiubiu 标签浏览权限，进入激萌的世界。关闭请搜索“关闭biubiubiu”",
-    closeMsg: "确认关闭Hentai模式吗？",
-    str:"biubiubiu"
-  }
-}
+var TAG_LIST = []
 
 // 开关字符
 var INS = {
@@ -29,6 +17,44 @@ var INS = {
   CLOSE: {
     str: "close",
     reg: new RegExp("^关闭|^退出|^结束|^封印", "g")
+  }
+}
+
+/**
+ * 用于外部检测是否已初始化开关列表
+ */
+function isEmpty(){
+  if (TAG_LIST.length == 0){
+    return true
+  } else {
+    return false
+  }
+}
+
+/**
+ * 用于外部填入
+ */
+function unpackTagList(data){
+  for (var key in data) {
+
+    var code = 0
+    switch(data[key].type){
+      case 21:
+        code = 2
+        break
+      case 22:
+        code = 3
+        break
+    }
+
+    var name = data[key].name
+    var tag = {
+      code: code,
+      openMsg: data[key].remark ? data[key].remark : "开启#" + name + "标签浏览权限。关闭请搜索“关闭" + name + "”",
+      tagId: key,
+      tagName: name
+    }
+    TAG_LIST.push(tag)
   }
 }
 
@@ -50,9 +76,10 @@ function isSwitch({str,callback}) {
   } else { // 非特殊指令
     return false
   }
-  for(var key in ENUM){
-    if (str.toUpperCase() == ENUM[key].str){
-      switchMode(ins, ENUM[key],callback)
+  
+  for(var key in TAG_LIST){
+    if (str.toUpperCase() == TAG_LIST[key].tagName.toUpperCase()){
+      switchMode(ins, TAG_LIST[key],callback)
       return true
     }
   }
@@ -68,7 +95,7 @@ function switchMode(ins, mode, callback) {
   if(ins.str == "open") {
     msg = mode.openMsg
   } else {
-    msg = mode.closeMsg
+    msg = "确认关闭" + mode.tagName + "模式吗？"
   }
   wx.showModal({
     title: '提示',
@@ -80,7 +107,8 @@ function switchMode(ins, mode, callback) {
           method: "GET",
           data: {
             "ins": ins.str,
-            "modeCode": mode.code 
+            "modeCode": mode.code,
+            "tagId": mode.tagId
           },
           success: function (data) {
             callback()
@@ -97,5 +125,7 @@ function switchMode(ins, mode, callback) {
 
 module.exports = {
   isSwitch: isSwitch,
-  switchMode:switchMode
+  switchMode:switchMode,
+  isEmpty: isEmpty,
+  unpackTagList: unpackTagList
 }
