@@ -62,13 +62,19 @@ Page({
    * 保存随机按钮位置
    */
   saveRandomPoint: function () {
-    wx.createSelectorQuery().select('#random').boundingClientRect(function (rect) {
-      var pos = {
-        x: rect.left, // 节点的左边界坐标
-        y: rect.top  // 节点的上边界坐标
+    if(wx.canIUse("selectorQuery")){
+      wx.createSelectorQuery().select('#random').boundingClientRect(function (rect) {
+        var pos = {
+          x: rect.left, // 节点的左边界坐标
+          y: rect.top  // 节点的上边界坐标
+        }
+        wx.setStorageSync("randomPoint", pos)
+      }).exec()
+    } else {
+      if(this.data.times == 1) {
+        console.log("预留:提醒用户无法记忆按钮位置，建议更新微信版本")
       }
-      wx.setStorageSync("randomPoint", pos)
-    }).exec()
+    }
   },
   
   /**
