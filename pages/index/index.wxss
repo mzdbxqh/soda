@@ -73,12 +73,16 @@ button.weui-flex__item::after {
 }
 
 /*随机按钮部分*/
+.randombox {
+  position: absolute;
+  z-index: 500;
+}
 .random {
   display: block;
   position: absolute;
-  z-index: 500;
-  top: 0;
-  right: 0;
+  z-index: 600;
+  /* top: 0; */
+  /* right: 0; */
   width:130rpx;
   height:130rpx;
 }
@@ -95,6 +99,7 @@ button.weui-flex__item::after {
 .picBox {
   overflow:hidden;
   position: absolute;
+  z-index: 99;
 }
 
 .pic {

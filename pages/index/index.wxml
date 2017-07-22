@@ -1,13 +1,13 @@
 <!--图片部分-->
 <block wx:if="{{isX}}">
-  <scroll-view scroll-x style="width: {{boxwidth}}px;height:{{imageheight}}px" scroll-left="{{scrollLeft}}">
+  <scroll-view class="picBox" scroll-x style="width: {{boxwidth}}px;height:{{imageheight}}px" scroll-left="{{scrollLeft}}">
     <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
     src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
     hidden="{{photoHidden}}" class="scroll-view-item" />
   </scroll-view>
 </block>
 <block wx:else>
-  <scroll-view scroll-y style="height: {{boxheight}}px;" scroll-top="{{scrollTop}}">
+  <scroll-view class="picBox" scroll-y style="height: {{boxheight}}px;" scroll-top="{{scrollTop}}">
     <image style="width: {{imagewidth}}px; height: {{imageheight}}px;" 
     src="{{src}}" bindload="imageLoaded" catchtap="toggleBottomBar" 
     hidden="{{photoHidden}}" class="scroll-view-item" />
@@ -20,10 +20,14 @@
 </view>
 
 <!--随机图片-->
-<!--<button class="weui-btn mini-btn random" type="primary" size="mini" catchtap="getRandomPhoto">按钮</button>-->
-<view class="random" catchtap="getRandomPhoto">
+<!-- <view class="random" catchtap="getRandomPhoto">
   <image src="/images/random.png"></image>
-</view>
+</view> -->
+<movable-area class="randombox" style="height: {{boxheight-60}}px;width: {{boxwidth}}px;">
+  <movable-view id="random" class="random" catchtap="getRandomPhoto" x="{{x}}" y="{{y}}" direction="all">
+    <image src="/images/random.png"></image>
+  </movable-view>
+</movable-area>
 
 <!--标签等信息部分-->
 <view hidden="{{imageInfoHidden}}" class="image-info-box">

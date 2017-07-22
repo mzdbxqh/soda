@@ -34,7 +34,9 @@ Page({
     picExif:"", //图片尺寸分辨率等
 
     isLoading: false, //加载状态标记
-    loadBeginTime: 0 //加载开始时间
+    loadBeginTime: 0, //加载开始时间
+    x: 30, //随机按钮偏移
+    y: 30  //随机按钮偏移
   },
 
   /**
@@ -49,6 +51,25 @@ Page({
     }
   },
 
+  /**
+   * 生命周期函数--监听页面卸载
+   */
+  onUnload: function () {
+    this.saveRandomPoint()
+  },
+
+  /**
+   * 保存随机按钮位置
+   */
+  saveRandomPoint: function () {
+    wx.createSelectorQuery().select('#random').boundingClientRect(function (rect) {
+      var pos = {
+        x: rect.left, // 节点的左边界坐标
+        y: rect.top  // 节点的上边界坐标
+      }
+      wx.setStorageSync("randomPoint", pos)
+    }).exec()
+  },
   
   /**
    * 随机刷新图片
@@ -238,8 +259,11 @@ Page({
    * 图片加载完毕
    */
   imageLoaded: function (e) { //图片加载成功事件
-    if(this.data.src == "") return
+    var that = this
+    if (that.data.src == "") return
+    
     wx.hideLoading()
+
     var imageSize = imageUtil.imageFixer(e)
     var isX,scrollLeft,scrollTop
     if(imageSize.imageWidth > imageSize.boxWidth){ //图片比容器宽
@@ -251,26 +275,44 @@ Page({
       scrollLeft = 0
       scrollTop = (imageSize.imageHeight - imageSize.boxHeight) / 2
     }
-    this.setData({
+
+    that.setData({
       imagewidth: imageSize.imageWidth, 
       imageheight: imageSize.imageHeight,
       boxwidth: imageSize.boxWidth,
       boxheight: imageSize.boxHeight,
       isX:isX
     });
-    this.setData({
+
+    that.setData({
       photoHidden: false
     })
-    this.setData({
+
+    that.setData({
       scrollLeft: scrollLeft,
       scrollTop: scrollTop
     })
+
     // 暂时去掉音效
     // if(this.data.times > 1){
     //   setTimeout(function(){
     //     audioUtil.playSlide()
     //   },100)
     // }
+
+    // 初始化按钮位置
+    var pos = wx.getStorageSync('randomPoint')
+    if (!pos) {
+      pos = {
+        x: imageSize.boxWidth,
+        y: 0
+      }
+      wx.setStorageSync('randomPoint', pos)
+    }
+    that.setData({
+      x: pos.x,
+      y: pos.y
+    })
   },
 
   /**
@@ -495,5 +537,5 @@ Page({
       app.globalData.needRefreshPic = false
       this.getRandomPhoto()
     }
-  },
+  }
 })
