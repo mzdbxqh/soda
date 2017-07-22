@@ -55,7 +55,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-    this.saveRandomPoint()
+    // this.saveRandomPoint()
   },
 
   /**
@@ -76,6 +76,11 @@ Page({
    */
   getRandomPhoto: function (e) {
     var that = this
+
+    // 不是首次加载的话，保存一下按钮坐标
+    if(that.data.times != 0) {
+      this.saveRandomPoint()  
+    }
 
     wx.showLoading({
       title: '加载中'
@@ -300,19 +305,21 @@ Page({
     //   },100)
     // }
 
-    // 初始化按钮位置
-    var pos = wx.getStorageSync('randomPoint')
-    if (!pos) {
-      pos = {
-        x: imageSize.boxWidth,
-        y: 0
+    // 首次加载完成后，初始化按钮位置
+    if (that.data.times == 1) {
+      var pos = wx.getStorageSync('randomPoint')
+      if (!pos) {
+        pos = {
+          x: imageSize.boxWidth,
+          y: 0
+        }
+        wx.setStorageSync('randomPoint', pos)
       }
-      wx.setStorageSync('randomPoint', pos)
+      that.setData({
+        x: pos.x,
+        y: pos.y
+      })
     }
-    that.setData({
-      x: pos.x,
-      y: pos.y
-    })
   },
 
   /**
