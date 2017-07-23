@@ -50,7 +50,7 @@ function unpackTagList(data){
     var name = data[key].name
     var tag = {
       code: code,
-      openMsg: data[key].remark ? data[key].remark : "开启#" + name + "标签浏览权限。关闭请搜索“关闭" + name + "”",
+      openMsg: data[key].remarks ? data[key].remarks : "开启#" + name + "标签浏览权限。关闭请搜索“关闭" + name + "”",
       tagId: key,
       tagName: name
     }
