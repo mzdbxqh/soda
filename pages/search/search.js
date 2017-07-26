@@ -15,6 +15,13 @@ Page({
     this.setData({
       inputShowed: true
     });
+    jsUtil.authedRequest({
+      url: app.onSearch,
+      method: "GET",
+      success: function (data) {
+        // 埋点
+      }
+    })
   },
   hideInput: function () {
     this.setData({

@@ -50,6 +50,7 @@ App({
   picLoadConfirmUrl: "a/wp/picture/confirm", // 图片加载确认接口
   picShowOriginUrl: "a/wp/picture/showOriginPic", // 显示大图行为接口
   shareUrl: "a/wp/picture/share", // 分享行为接口
+  onSearch: "a/wp/fixTag/onSearch", // 激活搜索框
 
   /**
    * 资源地址
