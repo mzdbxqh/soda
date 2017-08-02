@@ -1,0 +1,25 @@
+<view class="topbar">
+  <image src="http://picture.91xiaban.com/resources/member.png"></image>
+  <text>感谢以下会员的分享及编辑
+  Soda已收录{{tagCount}}个标签、以及{{picCount}}张图片</text>
+</view>
+<view class="members">
+  <block wx:for="{{editorList}}" wx:key="*this">
+    <view class="members-box" id="{{index}}" catchtap="toggleMemberTip">
+      <image class="avatar" src="{{item.avatarUrl}}"></image>
+      <view class="member-tip" hidden="{{item.hidden}}">
+        <view class="member-tip-text">
+          <view>图片：{{item.picCount}}</view>
+          <view>标签：{{item.tagCount}}</view>
+        </view>
+      </view>
+      <text class="name">{{item.name}}</text>
+    </view>
+  </block>
+</view>
+<view class="join-box">
+  <view class="join-text" catchtap="joinUs">
+    <text>加入我们</text>
+  </view>
+  <!-- <image src="http://picture.91xiaban.com/resources/join.png" class="join-pic" catchtap="joinUs"></image> -->
+</view>

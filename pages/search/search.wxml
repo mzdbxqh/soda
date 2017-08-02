@@ -48,7 +48,7 @@
     </view>
 
     <view class="join-box">
-      <image src="http://picture.91xiaban.com/resources/join.png" class="join-pic" catchtap="joinUs"></image>
+      <image src="http://picture.91xiaban.com/resources/thanks.png" class="join-pic" catchtap="joinUs"></image>
     </view>
 
 

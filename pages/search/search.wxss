@@ -19,6 +19,7 @@
 }
 
 /*加入我们*/
+/* 改为鸣谢 */
 .join-box {
   position: fixed;
   bottom:0;
@@ -26,8 +27,10 @@
   width: 100%;
 }
 .join-pic {
+  /* width: 150px; */
+  /* height: 56px; */
   width: 150px;
-  height: 56px;
+  height: 76px;
   display: block;
   margin: 0 auto;
 }

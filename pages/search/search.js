@@ -111,7 +111,7 @@ Page({
    */
   joinUs: function(){
     wx.navigateTo({
-      url: '/pages/share/join/join',
+      url: '/pages/share/thanks/thanks',
     })
   },
 

@@ -13,7 +13,8 @@
     "pages/search/press/press",
     "pages/share/share",
     "pages/share/uploader/uploader",
-    "pages/share/join/join"
+    "pages/share/join/join",
+    "pages/share/thanks/thanks"
   ],
   "window": {
     "navigationBarBackgroundColor": "#fff",

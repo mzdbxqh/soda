@@ -39,6 +39,11 @@ App({
   switchTagSearchUrl: "a/wp/fixTag/searchSwitchTag", //搜索开关标签
 
   /**
+   * 编辑相关接口
+   */
+  editorAbstractUrl: "a/wp/picture/editor/abstract", //获取编辑概况
+
+  /**
    * 辅助页面接口
    */
   feedbackUrl: "a/wp/feedback/put", // 提交feedback
