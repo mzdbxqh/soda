@@ -30,7 +30,7 @@ Page({
       return
     }
     var postData = {
-      content: "#组员申请#:" + that.data.wechatNo
+      content: "#编辑申请#:" + that.data.wechatNo
     }
     jsUtil.authedRequest({
       url: app.feedbackUrl,
