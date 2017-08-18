@@ -420,7 +420,8 @@ Page({
     return jsUtil.doShare({
       title: '给大家分享一张我觉得不错的壁纸',
       path: '/pages/index/index?pid=' + that.data.current,
-      page: "index"
+      page: "index",
+      imageUrl: that.data.prevSrc
     })
   },
 

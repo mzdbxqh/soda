@@ -246,7 +246,8 @@ function checkWxAuth(callback) {
  */
 function doShare({title = '我发现了一个还不错的动漫壁纸应用',
   path = '/pages/index/index',
-  page = ''}) {
+  page = '',
+  imageUrl = ''}) {
   var obj = {
     title: title,
     path: path,
@@ -269,9 +270,13 @@ function doShare({title = '我发现了一个还不错的动漫壁纸应用',
     fail: function (res) {
       wx.showToast({
         title: "分享失败",
+        image: '../../images/tip_error.png',
         icon: 'fail' //TODO:不支持该ICON
       })
     }
+  }
+  if (imageUrl != "") {
+    obj['imageUrl'] = imageUrl
   }
   return obj
 }
