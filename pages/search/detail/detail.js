@@ -292,7 +292,7 @@ Page({
   onShareAppMessage: function () {
     var that = this
     return jsUtil.doShare({
-      title: '给大家分享一张我喜欢的壁纸',
+      title: '猜猜这是哪部动漫',
       path: '/pages/index/index?pid=' + that.data.current,
       page: "detail",
       imageUrl: that.data.src
